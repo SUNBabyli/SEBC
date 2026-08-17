@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djerpsystem.mapper.ErpUserMapper">
+
+    <resultMap type="ErpUser" id="ErpUserResult">
+        <result property="user_ID"      column="USER_ID"      />
+        <result property="logonname"       column="LOGONNAME"      />
+        <result property="user_NAME"     column="USER_NAME"    />
+        <result property="logontime"     column="LOGONTIME"    />
+    </resultMap>
+
+	<sql id="selectUserVo">
+        select u.USER_ID AS user_ID, u.LOGONNAME AS logonname, u.USER_NAME AS user_NAME, u.LOGONTIME AS logontime
+        from user u
+    </sql>
+    
+    <select id="selectUserList" parameterType="ErpUser"  resultMap="ErpUserResult">
+		select u.USER_ID, u.LOGONNAME, u.USER_NAME, u.LOGONTIME
+		from [USER] u
+		where u.ApproveStatus = 'Y'
+		<if test="user_ID != null and user_ID != 0">
+			AND u.USER_ID = #{user_ID}
+		</if>
+		<if test="user_NAME != null and user_NAME != ''">
+			AND u.USER_NAME like concat('%', #{user_NAME}, '%')
+		</if>
+		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+			AND u.LOGONTIME &gt;= #{params.beginTime}
+		</if>
+		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+			AND u.LOGONTIME &lt;= #{params.endTime}
+		</if>
+		ORDER BY
+			u.LOGONTIME ASC
+		<!-- 数据范围过滤 -->
+-- 		${params.dataScope}
+	</select>
+</mapper> 

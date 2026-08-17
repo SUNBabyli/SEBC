@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djerpsystem.mapper.ManufacturingOrderVoMapper">
+
+    <resultMap id="ManufacturingOrderVoResult" type="ManufacturingOrderVo">
+        <result property="owner_org_roid_code" column="Owner_Org_ROid_CODE"/>
+        <result property="owner_org_roid_name" column="Owner_Org_ROid_NAME"/>
+        <result property="doc_id_doc_name" column="DOC_ID_DOC_NAME"/>
+        <result property="doc_no" column="DOC_NO"/>
+        <result property="rtk" column="RTK"/>
+        <result property="urgent" column="URGENT"/>
+        <result property="doc_date" column="DOC_DATE"/>
+        <result property="item_id_item_code" column="ITEM_ID_ITEM_CODE"/>
+        <result property="item_description" column="ITEM_DESCRIPTION"/>
+        <result property="item_specification" column="ITEM_SPECIFICATION"/>
+        <result property="e_code" column="E_CODE"/>
+        <result property="drawing_no" column="DRAWING_NO"/>
+        <result property="bom_version_times" column="BOM_VERSION_TIMES"/>
+        <result property="bom_date" column="BOM_DATE"/>
+        <result property="status" column="STATUS"/>
+        <result property="lot_mo_flag" column="LOT_MO_FLAG"/>
+        <result property="plan_qty" column="PLAN_QTY"/>
+        <result property="req_qty" column="REQ_QTY"/>
+        <result property="completed_qty" column="COMPLETED_QTY"/>
+        <result property="scrap_qty" column="SCRAP_QTY"/>
+        <result property="destroyed_qty" column="DESTROYED_QTY"/>
+        <result property="lot_mo_qty" column="LOT_MO_QTY"/>
+        <result property="business_unit_id_unit_name" column="BUSINESS_UNIT_ID_UNIT_NAME"/>
+        <result property="source_id_roid" column="SOURCE_ID_ROid"/>
+        <result property="admin_unit_id_admin_unit_name" column="ADMIN_UNIT_ID_ADMIN_UNIT_NAME"/>
+        <result property="item_routing_control" column="ITEM_ROUTING_CONTROL"/>
+        <result property="item_routing_id_routing_code" column="ITEM_ROUTING_ID_ROUTING_CODE"/>
+        <result property="receipt_req_control" column="RECEIPT_REQ_CONTROL"/>
+        <result property="plan_start_date" column="PLAN_START_DATE"/>
+        <result property="plan_complete_date" column="PLAN_COMPLETE_DATE"/>
+        <result property="actual_start_date" column="ACTUAL_START_DATE"/>
+        <result property="actual_complete_date" column="ACTUAL_COMPLETE_DATE"/>
+        <result property="plan_lot" column="PLAN_LOT"/>
+        <result property="source_mo_id_doc_no" column="SOURCE_MO_ID_DOC_NO"/>
+        <result property="doc_no1" column="DOC_NO1"/>
+        <result property="para_mo_id_doc_no" column="PARA_MO_ID_DOC_NO"/>
+        <result property="owner_dept_admin_unit_name" column="Owner_Dept_ADMIN_UNIT_NAME"/>
+        <result property="owner_emp_employee_name" column="Owner_Emp_EMPLOYEE_NAME"/>
+        <result property="project_code" column="PROJECT_CODE"/>
+        <result property="project_name" column="PROJECT_NAME"/>
+        <result property="remark" column="REMARK"/>
+        <result property="efnetstatus2" column="EFNETStatus2"/>
+        <result property="mo_demand_sequencenumber" column="MO_DEMAND_SequenceNumber"/>
+        <result property="mo_demand_demand_doc_rtk" column="MO_DEMAND_DEMAND_DOC_RTK"/>
+        <result property="demand_doc_roid" column="DEMAND_DOC_ROID"/>
+        <result property="demand_no" column="DEMAND_NO"/>
+        <result property="reference_source_id_item_id_code" column="REFERENCE_SOURCE_ID_ITEM_ID_CODE"/>
+        <result property="reference_source_id_item_id_name" column="REFERENCE_SOURCE_ID_ITEM_ID_NAME"/>
+        <result property="reference_source_id_item_specification" column="REFERENCE_SOURCE_ID_ITEM_SPECIFICATION"/>
+        <result property="eference_source_id_item_feature_code" column="EFERENCE_SOURCE_ID_ITEM_FEATURE_CODE"/>
+        <result property="eference_source_id_item_feature_specification"
+                column="EFERENCE_SOURCE_ID_ITEM_FEATURE_SPECIFICATION"/>
+        <result property="demand_qty" column="DEMAND_QTY"/>
+        <result property="plan_delivery_date" column="PLAN_DELIVERY_DATE"/>
+        <result property="demand_doc_customer_name" column="DEMAND_DOC_CUSTOMER_NAME"/>
+        <result property="locked_flag" column="LOCKED_FLAG"/>
+        <result property="mo_demand_remark" column="MO_DEMAND_REMARK"/>
+        <result property="asq_approvestatus" column="ASQ_ApproveStatus"/>
+        <result property="item_feature_code" column="ITEM_FEATURE_CODE"/>
+        <result property="item_feature_id_item_specification" column="ITEM_FEATURE_ID_ITEM_SPECIFICATION"/>
+        <result property="mo_id" column="MO_ID"/>
+        <result property="plant_id" column="PLANT_ID"/>
+        <result property="roid" column="ROid"/>
+        <result property="approvestatus" column="APPROVESTATUS"/>
+    </resultMap>
+
+    <select id="selectManufacturingOrderVoList" parameterType="ManufacturingOrderVo"
+            resultMap="ManufacturingOrderVoResult">
+        SELECT TOP 101
+            [t1].[PLANT_CODE] AS [Owner_Org_ROid_CODE],
+            [t1].[PLANT_NAME] AS [Owner_Org_ROid_NAME],
+            [t2].[DOC_NAME] AS [DOC_ID_DOC_NAME],
+            [t0].[DOC_NO] AS [DOC_NO],
+            [t0].[SOURCE_ID_RTK] AS [RTK],
+            [t0].[URGENT] AS [URGENT],
+            [t0].[DOC_DATE] AS [DOC_DATE],
+            [t3].[ITEM_CODE] AS [ITEM_ID_ITEM_CODE],
+            [t0].[ITEM_DESCRIPTION] AS [ITEM_DESCRIPTION],
+            [t0].[ITEM_SPECIFICATION] AS [ITEM_SPECIFICATION],
+            [t3].[E_CODE] AS [E_CODE],
+            CASE [t3].[DRAWING_NO_FROM]
+        WHEN N'1' THEN
+            [t3].[DRAWING_NO]
+        WHEN N'2' THEN
+            [t4].[DRAWING_NO]
+                END
+                AS [DRAWING_NO],
+         [t0].[BOM_VERSION_TIMES] AS [BOM_VERSION_TIMES],
+         [t0].[BOM_DATE] AS [BOM_DATE],
+         [t0].[STATUS] AS [STATUS],
+         [t0].[LOT_MO_FLAG] AS [LOT_MO_FLAG],
+         [t0].[PLAN_QTY] AS [PLAN_QTY],
+         [t0].[REQ_QTY] AS [REQ_QTY],
+         [t0].[COMPLETED_QTY] AS [COMPLETED_QTY],
+         [t0].[SCRAP_QTY] AS [SCRAP_QTY],
+         [t0].[DESTROYED_QTY] AS [DESTROYED_QTY],
+         [t0].[LOT_MO_QTY] AS [LOT_MO_QTY],
+         [t5].[UNIT_NAME] AS [BUSINESS_UNIT_ID_UNIT_NAME],
+         CASE [t0].[SOURCE_ID_RTK]
+        WHEN N'SUPPLIER' THEN
+            [t6].[SUPPLIER_NAME]
+        WHEN N'WORK_CENTER' THEN
+            [t7].[WORK_CENTER_NAME]
+                END
+                AS [SOURCE_ID_ROid],
+         [t8].[ADMIN_UNIT_NAME] AS [ADMIN_UNIT_ID_ADMIN_UNIT_NAME],
+         [t0].[ITEM_ROUTING_CONTROL] AS [ITEM_ROUTING_CONTROL],
+         [t9].[ROUTING_DES] AS [ITEM_ROUTING_ID_ROUTING_CODE],
+         [t0].[RECEIPT_REQ_CONTROL] AS [RECEIPT_REQ_CONTROL],
+         [t0].[PLAN_START_DATE] AS [PLAN_START_DATE],
+         [t0].[PLAN_COMPLETE_DATE] AS [PLAN_COMPLETE_DATE],
+        CASE [t0].[ACTUAL_START_DATE]
+        WHEN N'1900-01-01 00:00:00.0000000' THEN
+            NULL
+        ELSE
+            [t0].[ACTUAL_START_DATE]
+            END AS [ACTUAL_START_DATE],
+        CASE [t0].[ACTUAL_COMPLETE_DATE]
+        WHEN N'9998-12-31 00:00:00.0000000' THEN
+            NULL
+        ELSE
+            [t0].[ACTUAL_COMPLETE_DATE]
+            END AS [ACTUAL_COMPLETE_DATE],
+         [t0].[PLAN_LOT] AS [PLAN_LOT],
+         [t10].[DOC_NO] AS [SOURCE_MO_ID_DOC_NO],
+         [t11].[DOC_NO] AS [DOC_NO1],
+         [t12].[DOC_NO] AS [PARA_MO_ID_DOC_NO],
+         [t13].[ADMIN_UNIT_NAME] AS [Owner_Dept_ADMIN_UNIT_NAME],
+         [t14].[EMPLOYEE_NAME] AS [Owner_Emp_EMPLOYEE_NAME],
+         [t15].[PROJECT_CODE] AS [PROJECT_CODE],
+         [t15].[PROJECT_NAME] AS [PROJECT_NAME],
+         [t0].[REMARK] AS [REMARK],
+         [t0].[EFNETStatus] AS [EFNETStatus2],
+         [t16].[SequenceNumber] AS [MO_DEMAND_SequenceNumber],
+         CASE [t16].[DEMAND_DOC_RTK]
+        WHEN N'SALES_ORDER_DOC.SALES_ORDER_DOC_D.SALES_ORDER_DOC_SD' THEN
+            '销售订单'
+        WHEN N'MO' THEN
+            '工单'
+        END AS [MO_DEMAND_DEMAND_DOC_RTK],
+         CASE [t16].[DEMAND_DOC_RTK]
+        WHEN N'SALES_ORDER_DOC.SALES_ORDER_DOC_D.SALES_ORDER_DOC_SD' THEN
+            (
+                [t19].[DOC_NO] + (
+                    N'-' + (
+                        CAST (
+                            [t21].[SequenceNumber] AS NVarChar
+                        ) + (
+                            N'-' + CAST (
+                                [t22].[SequenceNumber] AS NVarChar
+                            )
+                        )
+                    )
+                )
+            )
+        WHEN N'TRANSFER_REQUISITION.TRANSFER_REQUISITION_D' THEN
+            (
+                [t24].[DOC_NO] + (
+                    N'-' + CAST (
+                        [t25].[SequenceNumber] AS NVarChar
+                    )
+                )
+            )
+        WHEN N'INNER_ORDER_DOC.INNER_ORDER_DOC_D.INNER_ORDER_DOC_SD' THEN
+            (
+                [t28].[DOC_NO] + (
+                    N'-' + (
+                        CAST (
+                            [t30].[SequenceNumber] AS NVarChar
+                        ) + (
+                            N'-' + CAST (
+                                [t31].[SequenceNumber] AS NVarChar
+                            )
+                        )
+                    )
+                )
+            )
+        WHEN N'STOCKING_PLAN.STOCKING_PLAN_D' THEN
+            (
+                [t33].[STOCKING_PLAN_NO] + (
+                    N'-' + CAST (
+                        [t34].[SequenceNumber] AS NVarChar
+                    )
+                )
+            )
+                END
+                AS [DEMAND_DOC_ROID],
+         [t0].[DEMAND_NO] AS [DEMAND_NO],
+         CASE [t16].[DEMAND_DOC_RTK]
+        WHEN N'MO' THEN
+            [t36].[ITEM_CODE]
+        WHEN N'DISTRIBUTION_LIST' THEN
+            [t38].[ITEM_CODE]
+        WHEN N'SALES_ORDER_DOC.SALES_ORDER_DOC_D.SALES_ORDER_DOC_SD' THEN
+            [t39].[ITEM_CODE]
+        WHEN N'STOCKING_PLAN.STOCKING_PLAN_D' THEN
+            [t32].[ITEM_CODE]
+        WHEN N'INNER_ORDER_DOC.INNER_ORDER_DOC_D.INNER_ORDER_DOC_SD' THEN
+            [t40].[ITEM_CODE]
+        WHEN N'FORECAST.FORECAST_D' THEN
+            [t42].[ITEM_CODE]
+                END
+                AS [REFERENCE_SOURCE_ID_ITEM_ID_CODE],
+         CASE [t16].[DEMAND_DOC_RTK]
+        WHEN N'MO' THEN
+            [t36].[ITEM_NAME]
+        WHEN N'DISTRIBUTION_LIST' THEN
+            [t38].[ITEM_NAME]
+        WHEN N'SALES_ORDER_DOC.SALES_ORDER_DOC_D.SALES_ORDER_DOC_SD' THEN
+            [t39].[ITEM_NAME]
+        WHEN N'STOCKING_PLAN.STOCKING_PLAN_D' THEN
+            [t32].[ITEM_NAME]
+        WHEN N'INNER_ORDER_DOC.INNER_ORDER_DOC_D.INNER_ORDER_DOC_SD' THEN
+            [t40].[ITEM_NAME]
+        WHEN N'FORECAST.FORECAST_D' THEN
+            [t42].[ITEM_NAME]
+                END
+                AS [REFERENCE_SOURCE_ID_ITEM_ID_NAME],
+         CASE [t16].[DEMAND_DOC_RTK]
+        WHEN N'MO' THEN
+            [t36].[ITEM_SPECIFICATION]
+        WHEN N'DISTRIBUTION_LIST' THEN
+            [t38].[ITEM_SPECIFICATION]
+        WHEN N'SALES_ORDER_DOC.SALES_ORDER_DOC_D.SALES_ORDER_DOC_SD' THEN
+            [t39].[ITEM_SPECIFICATION]
+        WHEN N'STOCKING_PLAN.STOCKING_PLAN_D' THEN
+            [t32].[ITEM_SPECIFICATION]
+        WHEN N'INNER_ORDER_DOC.INNER_ORDER_DOC_D.INNER_ORDER_DOC_SD' THEN
+            [t40].[ITEM_SPECIFICATION]
+        WHEN N'FORECAST.FORECAST_D' THEN
+            [t42].[ITEM_SPECIFICATION]
+                END
+                AS [REFERENCE_SOURCE_ID_ITEM_SPECIFICATION],
+         CASE [t16].[DEMAND_DOC_RTK]
+        WHEN N'MO' THEN
+            [t43].[ITEM_FEATURE_CODE]
+        WHEN N'DISTRIBUTION_LIST' THEN
+            [t44].[ITEM_FEATURE_CODE]
+        WHEN N'SALES_ORDER_DOC.SALES_ORDER_DOC_D.SALES_ORDER_DOC_SD' THEN
+            [t45].[ITEM_FEATURE_CODE]
+        WHEN N'STOCKING_PLAN.STOCKING_PLAN_D' THEN
+            [t32].[ITEM_FEATURE_CODE]
+        WHEN N'INNER_ORDER_DOC.INNER_ORDER_DOC_D.INNER_ORDER_DOC_SD' THEN
+            [t46].[ITEM_FEATURE_CODE]
+                END
+                AS [EFERENCE_SOURCE_ID_ITEM_FEATURE_CODE],
+         CASE [t16].[DEMAND_DOC_RTK]
+        WHEN N'MO' THEN
+            [t43].[ITEM_SPECIFICATION]
+        WHEN N'DISTRIBUTION_LIST' THEN
+            [t44].[ITEM_SPECIFICATION]
+        WHEN N'SALES_ORDER_DOC.SALES_ORDER_DOC_D.SALES_ORDER_DOC_SD' THEN
+            [t45].[ITEM_SPECIFICATION]
+        WHEN N'STOCKING_PLAN.STOCKING_PLAN_D' THEN
+            [t32].[ITEM_FEATURE_SPEC]
+        WHEN N'INNER_ORDER_DOC.INNER_ORDER_DOC_D.INNER_ORDER_DOC_SD' THEN
+            [t46].[ITEM_SPECIFICATION]
+                END
+                AS [EFERENCE_SOURCE_ID_ITEM_FEATURE_SPECIFICATION],
+         [t16].[DEMAND_QTY] AS [DEMAND_QTY],
+         CASE [t16].[DEMAND_DOC_RTK]
+        WHEN N'SALES_ORDER_DOC.SALES_ORDER_DOC_D.SALES_ORDER_DOC_SD' THEN
+            [t17].[PLAN_DELIVERY_DATE]
+        WHEN N'STOCKING_PLAN.STOCKING_PLAN_D' THEN
+            [t32].[FORECAST_DATE]
+                END
+                AS [PLAN_DELIVERY_DATE],
+         CASE [t16].[DEMAND_DOC_RTK]
+        WHEN N'SALES_ORDER_DOC.SALES_ORDER_DOC_D.SALES_ORDER_DOC_SD' THEN
+            [t47].[CUSTOMER_NAME]
+                END
+                AS [DEMAND_DOC_CUSTOMER_NAME],
+         [t16].[LOCKED_FLAG] AS [LOCKED_FLAG],
+         [t16].[REMARK] AS [MO_DEMAND_REMARK],
+         [t0].[ApproveStatus] AS [ASQ_ApproveStatus],
+         [t4].[ITEM_FEATURE_CODE] AS [ITEM_FEATURE_CODE],
+         [t4].[ITEM_SPECIFICATION] AS [ITEM_FEATURE_ID_ITEM_SPECIFICATION],
+         [t0].[MO_ID] AS [MO_ID],
+         [t1].[PLANT_ID] AS [PLANT_ID],
+         [t0].[SOURCE_ID_ROid] AS [ROid],
+         [t0].[ApproveStatus] AS [APPROVESTATUS],
+         CASE [t0].[SOURCE_ID_RTK]
+        WHEN N'SUPPLIER' THEN
+            [t6].[SUPPLIER_CODE]
+        WHEN N'WORK_CENTER' THEN
+            [t7].[WORK_CENTER_CODE]
+                END
+                AS [SOURCE_ID_CODE],
+         [t0].[EFNETStatus] AS [EFNETStatus],
+         [t0].[ProcessInstanceId] AS [Sys_Qc_ProcessInstanceId],
+         [t0].[ApproveStatus] AS [Sys_Qc_ApproveStatus],
+         ISNULL(
+            LEN(
+                SUBSTRING ([t0].[Attachments], 0, 2)
+            ),
+            0
+        ) AS [Sys_Qc_Attachments],
+         [t0].[CreateDate] AS [Sys_Qc_CreateDate],
+         [t48].[LOGONNAME] AS [Sys_Qc_CreateBy_CODE],
+         [t48].[USER_NAME] AS [Sys_Qc_CreateBy_NAME],
+         [t0].[ModifiedDate] AS [Sys_Qc_ModifiedDate],
+         [t49].[LOGONNAME] AS [Sys_Qc_ModifiedBy_CODE],
+         [t49].[USER_NAME] AS [Sys_Qc_ModifiedBy_NAME],
+         [t0].[LastModifiedDate] AS [Sys_Qc_LastModifiedDate],
+         [t50].[LOGONNAME] AS [Sys_Qc_LastModifiedBy_CODE],
+         [t50].[USER_NAME] AS [Sys_Qc_LastModifiedBy_NAME],
+         [t0].[ApproveDate] AS [Sys_Qc_ApproveDate],
+         [t51].[LOGONNAME] AS [Sys_Qc_ApproveBy_CODE],
+         [t51].[USER_NAME] AS [Sys_Qc_ApproveBy_NAME],
+         [t0].[MO_ID] AS [sys_MainId]
+        FROM
+            [MO] AS [t0]
+        LEFT OUTER JOIN [PLANT] AS [t1] ON [t0].[Owner_Org_ROid] = [t1].[PLANT_ID]
+        LEFT OUTER JOIN [DOC] AS [t2] ON [t0].[DOC_ID] = [t2].[DOC_ID]
+        LEFT OUTER JOIN [ITEM] AS [t3] ON [t0].[ITEM_ID] = [t3].[ITEM_BUSINESS_ID]
+        LEFT OUTER JOIN [ITEM_FEATURE] AS [t4] ON [t0].[ITEM_FEATURE_ID] = [t4].[ITEM_FEATURE_ID]
+        LEFT OUTER JOIN [UNIT] AS [t5] ON [t0].[BUSINESS_UNIT_ID] = [t5].[UNIT_ID]
+        LEFT OUTER JOIN [SUPPLIER] AS [t6] ON [t0].[SOURCE_ID_ROid] = [t6].[SUPPLIER_BUSINESS_ID]
+        LEFT OUTER JOIN [WORK_CENTER] AS [t7] ON [t0].[SOURCE_ID_ROid] = [t7].[WORK_CENTER_ID]
+        LEFT OUTER JOIN [ADMIN_UNIT] AS [t8] ON [t0].[ADMIN_UNIT_ID] = [t8].[ADMIN_UNIT_ID]
+        LEFT OUTER JOIN [ITEM_ROUTING] AS [t9] ON [t0].[ITEM_ROUTING_ID] = [t9].[ITEM_ROUTING_ID]
+        LEFT OUTER JOIN [MO] AS [t10] ON [t0].[SOURCE_MO_ID] = [t10].[MO_ID]
+        LEFT OUTER JOIN [MO] AS [t11] ON [t0].[UP_MO_ID] = [t11].[MO_ID]
+        LEFT OUTER JOIN [MO] AS [t12] ON [t0].[PARA_MO_ID] = [t12].[MO_ID]
+        LEFT OUTER JOIN [ADMIN_UNIT] AS [t13] ON [t0].[Owner_Dept] = [t13].[ADMIN_UNIT_ID]
+        LEFT OUTER JOIN [EMPLOYEE] AS [t14] ON [t0].[Owner_Emp] = [t14].[EMPLOYEE_ID]
+        LEFT OUTER JOIN [PROJECT] AS [t15] ON [t0].[PROJECT_ID] = [t15].[PROJECT_ID]
+        LEFT OUTER JOIN [MO_DEMAND] AS [t16] ON [t0].[MO_ID] = [t16].[MO_ID]
+        LEFT OUTER JOIN [SALES_ORDER_DOC_SD] AS [t17] ON [t16].[DEMAND_DOC_ROid] = [t17].[SALES_ORDER_DOC_SD_ID]
+        LEFT OUTER JOIN [SALES_ORDER_DOC_D] AS [t18] ON [t17].[SALES_ORDER_DOC_D_ID] = [t18].[SALES_ORDER_DOC_D_ID]
+        LEFT OUTER JOIN [SALES_ORDER_DOC] AS [t19] ON [t18].[SALES_ORDER_DOC_ID] = [t19].[SALES_ORDER_DOC_ID]
+        LEFT OUTER JOIN [SALES_ORDER_DOC_SD] AS [t20] ON [t16].[DEMAND_DOC_ROid] = [t20].[SALES_ORDER_DOC_SD_ID]
+        LEFT OUTER JOIN [SALES_ORDER_DOC_D] AS [t21] ON [t20].[SALES_ORDER_DOC_D_ID] = [t21].[SALES_ORDER_DOC_D_ID]
+        LEFT OUTER JOIN [SALES_ORDER_DOC_SD] AS [t22] ON [t16].[DEMAND_DOC_ROid] = [t22].[SALES_ORDER_DOC_SD_ID]
+        LEFT OUTER JOIN [TRANSFER_REQUISITION_D] AS [t23] ON [t16].[DEMAND_DOC_ROid] = [t23].[TRANSFER_REQUISITION_D_ID]
+        LEFT OUTER JOIN [TRANSFER_REQUISITION] AS [t24] ON [t23].[TRANSFER_REQUISITION_ID] = [t24].[TRANSFER_REQUISITION_ID]
+        LEFT OUTER JOIN [TRANSFER_REQUISITION_D] AS [t25] ON [t16].[DEMAND_DOC_ROid] = [t25].[TRANSFER_REQUISITION_D_ID]
+        LEFT OUTER JOIN [INNER_ORDER_DOC_SD] AS [t26] ON [t16].[DEMAND_DOC_ROid] = [t26].[INNER_ORDER_DOC_SD_ID]
+        LEFT OUTER JOIN [INNER_ORDER_DOC_D] AS [t27] ON [t26].[INNER_ORDER_DOC_D_ID] = [t27].[INNER_ORDER_DOC_D_ID]
+        LEFT OUTER JOIN [INNER_ORDER_DOC] AS [t28] ON [t27].[INNER_ORDER_DOC_ID] = [t28].[INNER_ORDER_DOC_ID]
+        LEFT OUTER JOIN [INNER_ORDER_DOC_SD] AS [t29] ON [t16].[DEMAND_DOC_ROid] = [t29].[INNER_ORDER_DOC_SD_ID]
+        LEFT OUTER JOIN [INNER_ORDER_DOC_D] AS [t30] ON [t29].[INNER_ORDER_DOC_D_ID] = [t30].[INNER_ORDER_DOC_D_ID]
+        LEFT OUTER JOIN [INNER_ORDER_DOC_SD] AS [t31] ON [t16].[DEMAND_DOC_ROid] = [t31].[INNER_ORDER_DOC_SD_ID]
+        LEFT OUTER JOIN [STOCKING_PLAN_D] AS [t32] ON [t16].[DEMAND_DOC_ROid] = [t32].[STOCKING_PLAN_D_ID]
+        LEFT OUTER JOIN [STOCKING_PLAN] AS [t33] ON [t32].[STOCKING_PLAN_ID] = [t33].[STOCKING_PLAN_ID]
+        LEFT OUTER JOIN [STOCKING_PLAN_D] AS [t34] ON [t16].[DEMAND_DOC_ROid] = [t34].[STOCKING_PLAN_D_ID]
+        LEFT OUTER JOIN [MO] AS [t35] ON [t16].[DEMAND_DOC_ROid] = [t35].[MO_ID]
+        LEFT OUTER JOIN [ITEM] AS [t36] ON [t35].[ITEM_ID] = [t36].[ITEM_BUSINESS_ID]
+        LEFT OUTER JOIN [DISTRIBUTION_LIST] AS [t37] ON [t16].[DEMAND_DOC_ROid] = [t37].[DISTRIBUTION_LIST_ID]
+        LEFT OUTER JOIN [ITEM] AS [t38] ON [t37].[ITEM_ID] = [t38].[ITEM_BUSINESS_ID]
+        LEFT OUTER JOIN [ITEM] AS [t39] ON [t18].[ITEM_ID] = [t39].[ITEM_BUSINESS_ID]
+        LEFT OUTER JOIN [ITEM] AS [t40] ON [t27].[ITEM_ID] = [t40].[ITEM_BUSINESS_ID]
+        LEFT OUTER JOIN [FORECAST_D] AS [t41] ON [t16].[DEMAND_DOC_ROid] = [t41].[FORECAST_D_ID]
+        LEFT OUTER JOIN [ITEM] AS [t42] ON [t41].[ITEM_ID] = [t42].[ITEM_BUSINESS_ID]
+        LEFT OUTER JOIN [ITEM_FEATURE] AS [t43] ON [t35].[ITEM_FEATURE_ID] = [t43].[ITEM_FEATURE_ID]
+        LEFT OUTER JOIN [ITEM_FEATURE] AS [t44] ON [t37].[ITEM_FEATURE_ID] = [t44].[ITEM_FEATURE_ID]
+        LEFT OUTER JOIN [ITEM_FEATURE] AS [t45] ON [t18].[ITEM_FEATURE_ID] = [t45].[ITEM_FEATURE_ID]
+        LEFT OUTER JOIN [ITEM_FEATURE] AS [t46] ON [t27].[ITEM_FEATURE_ID] = [t46].[ITEM_FEATURE_ID]
+        LEFT OUTER JOIN [CUSTOMER] AS [t47] ON [t17].[SHIP_TO_CUSTOMER_ID] = [t47].[CUSTOMER_BUSINESS_ID]
+        LEFT OUTER JOIN [USER] AS [t48] ON [t0].[CreateBy] = [t48].[USER_ID]
+        LEFT OUTER JOIN [USER] AS [t49] ON [t0].[ModifiedBy] = [t49].[USER_ID]
+        LEFT OUTER JOIN [USER] AS [t50] ON [t0].[LastModifiedBy] = [t50].[USER_ID]
+        LEFT OUTER JOIN [USER] AS [t51] ON [t0].[ApproveBy] = [t51].[USER_ID]
+        WHERE [t0].[ApproveStatus] = 'Y'
+        <if test="doc_no !=null and doc_no != ''"><!-- 销售订单号 -->
+            AND [t0].[DOC_NO] = #{doc_no}
+        </if>
+        <if test="demand_no !=null and demand_no !=''"><!-- 工单单号 -->
+            AND [t0].[DEMAND_NO] like concat('%', #{demand_no}, '%')
+        </if>
+        <if test="status != null and status !=''"><!-- 生产状态码 -->
+            AND [t0].[STATUS] = #{status}
+        </if>
+        <if test="item_id_item_code != null and item_id_item_code !=''"><!-- 产品品号 -->
+            AND [t3].[ITEM_CODE] = #{item_id_item_code}
+        </if>
+        <if test="doc_id_doc_name != null and doc_id_doc_name !=''"><!-- 单据类型 -->
+            AND [t2].[DOC_NAME] = #{doc_id_doc_name}
+        </if>
+        <if test="doc_id_doc_name == null or doc_id_doc_name ==''"><!-- 单据类型 -->
+            AND [t2].[DOC_NAME] = '总装生产任务单'
+        </if>
+        <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+            AND [t0].[DOC_DATE] &gt;= #{params.beginTime}
+        </if>
+        <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+            AND [t0].[DOC_DATE] &lt;= #{params.endTime}
+        </if>
+        <if test="params.beginTime == null or params.beginTime == ''"><!-- 开始时间检索 -->
+            AND [t0].[DOC_DATE] &gt;= DATEADD(d, -15, GETDATE())
+        </if>
+        <if test="params.endTime == null or params.endTime == ''"><!-- 结束时间检索 -->
+            AND [t0].[DOC_DATE] &lt;= DATEADD(d, 30, GETDATE())
+        </if>
+        ORDER BY
+            [t0].[DOC_NO] DESC,
+            [t0].[DOC_DATE] DESC,
+            [t1].[PLANT_CODE] ASC
+    </select>
+</mapper>

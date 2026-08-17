@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djplmsystem.mapper.MaClassificationMasterMapper">
+
+    <resultMap type="MaClassificationMaster" id="MaClassificationMasterResult">
+        <result property="guid"    column="GUID"    />
+        <result property="groupname"    column="GROUPNAME"    />
+        <result property="createuserguid"    column="CREATEUSERGUID"    />
+        <result property="createTime"    column="CREATETIME"    />
+        <result property="updateuserguid"    column="UPDATEUSERGUID"    />
+        <result property="updateTime"    column="UPDATETIME"    />
+        <result property="title"    column="TITLE"    />
+        <result property="description"    column="DESCRIPTION"    />
+        <result property="name"    column="NAME"    />
+        <result property="type"    column="TYPE"    />
+        <result property="showtype"    column="SHOWTYPE"    />
+        <result property="basetablename"    column="BASETABLENAME"    />
+        <result property="delflag"    column="DELFLAG"    />
+    </resultMap>
+
+    <sql id="selectMaClassificationMasterVo">
+        select GUID, GROUPNAME, CREATEUSERGUID, CREATETIME, UPDATEUSERGUID, UPDATETIME, TITLE, DESCRIPTION, NAME, TYPE, SHOWTYPE, BASETABLENAME, DELFLAG from ma_classification_master
+    </sql>
+
+    <select id="selectMacimListByGuid" parameterType="list" resultMap="MaClassificationMasterResult">
+        <include refid="selectMaClassificationMasterVo"/>
+        where DELFLAG ='N'
+        <if test="list != null and list.size() >0">
+            AND GUID IN
+            <foreach collection="list" item="guid" index="index" open="(" separator="," close=")">
+                #{guid}
+            </foreach>
+        </if>
+        order by CREATETIME
+    </select>
+
+    <select id="selectMaClassificationMasterList" parameterType="MaClassificationMaster" resultMap="MaClassificationMasterResult">
+        <include refid="selectMaClassificationMasterVo"/>
+        <where>
+            <if test="guid != null  and guid != ''"> and GUID = #{guid}</if>
+            <if test="groupname != null  and groupname != ''"> and GROUPNAME = #{groupname}</if>
+            <if test="createuserguid != null  and createuserguid != ''"> and CREATEUSERGUID = #{createuserguid}</if>
+            <if test="createTime != null "> and CREATETIME = #{createTime}</if>
+            <if test="updateuserguid != null  and updateuserguid != ''"> and UPDATEUSERGUID = #{updateuserguid}</if>
+            <if test="updateTime != null "> and UPDATETIME = #{updateTime}</if>
+            <if test="title != null  and title != ''"> and TITLE like concat('%', #{title}, '%')</if>
+            <if test="description != null  and description != ''"> and DESCRIPTION = #{description}</if>
+            <if test="name != null  and name != ''"> and NAME = #{name}</if>
+            <if test="type != null  and type != ''"> and TYPE = #{type}</if>
+            <if test="showtype != null  and showtype != ''"> and SHOWTYPE = #{showtype}</if>
+            <if test="basetablename != null  and basetablename != ''"> and BASETABLENAME like concat('%', #{basetablename}, '%')</if>
+            <if test="delflag != null  and delflag != ''"> and DELFLAG != #{delflag}</if>
+        </where>
+    </select>
+
+    <select id="selectMaClassificationMasterByGuid" parameterType="String" resultMap="MaClassificationMasterResult">
+        <include refid="selectMaClassificationMasterVo"/>
+        where GUID = #{guid}
+    </select>
+
+    <insert id="insertMaClassificationMaster" parameterType="MaClassificationMaster">
+        insert into ma_classification_master
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="guid != null">GUID,</if>
+            <if test="groupname != null">GROUPNAME,</if>
+            <if test="createuserguid != null">CREATEUSERGUID,</if>
+            <if test="createTime != null">CREATETIME,</if>
+            <if test="updateuserguid != null">UPDATEUSERGUID,</if>
+            <if test="updateTime != null">UPDATETIME,</if>
+            <if test="title != null">TITLE,</if>
+            <if test="description != null">DESCRIPTION,</if>
+            <if test="name != null">NAME,</if>
+            <if test="type != null">TYPE,</if>
+            <if test="showtype != null">SHOWTYPE,</if>
+            <if test="basetablename != null">BASETABLENAME,</if>
+            <if test="delflag != null">DELFLAG,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="guid != null">#{guid},</if>
+            <if test="groupname != null">#{groupname},</if>
+            <if test="createuserguid != null">#{createuserguid},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateuserguid != null">#{updateuserguid},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="title != null">#{title},</if>
+            <if test="description != null">#{description},</if>
+            <if test="name != null">#{name},</if>
+            <if test="type != null">#{type},</if>
+            <if test="showtype != null">#{showtype},</if>
+            <if test="basetablename != null">#{basetablename},</if>
+            <if test="delflag != null">#{delflag},</if>
+        </trim>
+    </insert>
+
+    <update id="updateMaClassificationMaster" parameterType="MaClassificationMaster">
+        update ma_classification_master
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="groupname != null">GROUPNAME = #{groupname},</if>
+            <if test="createuserguid != null">CREATEUSERGUID = #{createuserguid},</if>
+            <if test="createTime != null">CREATETIME = #{createTime},</if>
+            <if test="updateuserguid != null">UPDATEUSERGUID = #{updateuserguid},</if>
+            <if test="updateTime != null">UPDATETIME = #{updateTime},</if>
+            <if test="title != null">TITLE = #{title},</if>
+            <if test="description != null">DESCRIPTION = #{description},</if>
+            <if test="name != null">NAME = #{name},</if>
+            <if test="type != null">TYPE = #{type},</if>
+            <if test="showtype != null">SHOWTYPE = #{showtype},</if>
+            <if test="basetablename != null">BASETABLENAME = #{basetablename},</if>
+            <if test="delflag != null">DELFLAG = #{delflag},</if>
+        </trim>
+        where GUID = #{guid}
+    </update>
+
+    <delete id="deleteMaClassificationMasterByGuid" parameterType="String">
+        delete from ma_classification_master where GUID = #{guid}
+    </delete>
+
+    <delete id="deleteMaClassificationMasterByGuids" parameterType="String">
+        delete from ma_classification_master where GUID in
+        <foreach item="guid" collection="array" open="(" separator="," close=")">
+            #{guid}
+        </foreach>
+    </delete>
+</mapper>

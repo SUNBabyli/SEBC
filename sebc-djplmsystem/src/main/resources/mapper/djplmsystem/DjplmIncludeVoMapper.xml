@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djplmsystem.mapper.DjplmIncludeVoMapper">
+    <resultMap id="DjplmIncludeVoResult" type="DjplmIncludeVo">
+        <result property="parentguid" column="parentguid"/>
+        <result property="subguid" column="subguid"/>
+        <result property="description" column="description"/>
+        <result property="subid" column="subid"/>
+        <result property="name" column="name"/>
+        <result property="specification" column="specification"/>
+        <result property="classification" column="classification"/>
+        <result property="revisionid" column="revisionid"/>
+        <result property="sourcetype" column="sourcetype"/>
+        <result property="status" column="status"/>
+    </resultMap>
+    <select id="selectComponentIncludeProductItself" parameterType="String" resultMap="DjplmIncludeVoResult">
+        SELECT
+            '' AS parentguid,
+            i.guid AS subguid,
+            (select description from MA_CLASS m where m.guid = i.classguid) AS description,
+            i.ID AS subid,
+            i.revisionid || '.' || i.iterationid AS revisionid,
+            i.NAME AS name,
+            i.classification AS classification,
+            i.SPECIFICATION AS specification,
+            (select MCD.TITLE from MA_CODE_DETAIL MCD where MCD.DELFLAG = 'N' AND MCD.GUID = (select F_000072 from ITEM_1 ITEM1 where ITEM1.FOUNDATIONFK= i.guid)) AS sourcetype,
+            i.status AS status
+        FROM
+        ITEM_0 i
+        WHERE
+        1 = 1
+        --and guid='91A6D426EE9641E6BB51E5FD437D34BD'
+        <if test="guid != null and guid !=''">
+            AND  i.guid = #{guid}
+        </if>
+    </select>
+    <select id="selectComponentIncludeProductParent" parameterType="String" resultMap="DjplmIncludeVoResult">
+        SELECT
+            b.guid AS parentguid,
+            f$.guid AS subguid,
+            (select description from MA_CLASS m where m.guid = f$.classguid) AS description,
+            f$. ID AS subid,
+            f$. NAME AS NAME,
+            F$. SPECIFICATION AS SPECIFICATION,
+            f$.classification AS classification,
+            f$.revisionid || '.' || f$.iterationid AS revisionid,
+            (select MCD.TITLE from MA_CODE_DETAIL MCD where MCD.DELFLAG = 'N' AND MCD.GUID = (select F_000072 from ITEM_1 ITEM1 where ITEM1.FOUNDATIONFK= f$.guid)) AS sourcetype,
+            f$.status AS status
+        FROM
+            ITEM_0 f$,
+            BOMVIEW_0 A,
+            BOMSTRUCTURE_0 s,
+            ITEM_0 b,
+            bi_bom_template T,
+            ITEM_1 F$1
+        WHERE
+            f$.guid = A .end1
+          AND A .guid = s.viewfk
+          AND A .templateid = T . ID
+          AND b.masterfk = s.end2$master
+          AND (
+                1 = 1
+                AND f$.guid = F$1.foundationfk (+)
+            )
+          AND f$.latestrevision LIKE 'm%'
+          AND A . NAME = 'BOM'
+        <if test="guid != null and guid !=''">
+          AND b.guid = #{guid}
+        </if>
+        ORDER BY
+            f$. ID,
+            f$.revisionid
+    </select>
+</mapper>

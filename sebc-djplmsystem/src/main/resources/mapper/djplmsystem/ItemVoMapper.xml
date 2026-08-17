@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djplmsystem.mapper.ItemVoMapper">
+
+    <resultMap id="ItemVoResult" type="ItemVo">
+        <id property="itemId" column="itemId"/>
+        <result property="name" column="name"/>
+        <result property="mdescription" column="mdescription"/>
+        <result property="specification" column="specification"/>
+        <result property="classification" column="classification"/>
+        <result property="f000070" column="f_000070"/>
+        <result property="f000142" column="f_000142"/>
+        <result property="f000147" column="f_000147"/>
+        <result property="f000181" column="f_000181"/>
+        <result property="isbommodified" column="isbommodified"/>
+        <result property="adescription" column="adescription"/>
+        <result property="bdescription" column="bdescription"/>
+        <result property="guid" column="guid" />
+        <result property="iupdatetime" column="iupdatetime" />
+    </resultMap>
+
+    <select id="selectItemList" parameterType="ItemVo" resultMap="ItemVoResult">
+        select i0.id as itemId, i0.name, m.description as mdescription, i0.specification, i0.classification, i1.f_000070, i1.f_000142,
+        i1.f_000147, CA.description as adescription, CB.description as bdescription, i0.f_000181, i0.isbommodified, i0.guid, i0.updatetime as iupdatetime
+        from ITEM_0 i0
+        inner join ITEM_1 i1 on i0.guid = i1.foundationfk
+        inner join MA_CLASS m ON m.guid = i0.classguid
+        inner join MA_CODE_DETAIL CA ON i1.f_000072 = CA.guid
+        inner join MA_CODE_DETAIL CB ON i1.f_000145 = CB.guid
+        where i0.latestrevision LIKE 'm%'
+        <if test="itemId !=null and itemId !=''">
+            and i0.id = #{itemId}
+        </if>
+        <if test="specification !=null and specification !=''">
+            and i0.specification like '%' || #{specification} || '%'
+        </if>
+        <if test="f000070 !=null and f000070 !=''">
+            and i1.f_000070 like '%' || #{f000070} || '%'
+        </if>
+        <if test="f000147 !=null and f000147 !=''">
+            and i1.f_000147 like '%' || #{f000147} || '%'
+        </if>
+        <if test="classification != null and classification != ''">
+            and (i0.classification = #{classification} or i0.classification in( select mcd.guid from MA_CLASSIFICATION_DETAIL mcd where mcd.parentguid=#{classification}))
+        </if>
+        order by itemId
+    </select>
+    <select id="selectItemByItemid" parameterType="String" resultMap="ItemVoResult">
+        select i0.id as itemId, i0.name, m.description as mdescription, i0.specification, i0.classification, i1.f_000070, i1.f_000142,
+        i1.f_000147, CA.description as adescription, CB.description as bdescription, i0.f_000181, i0.isbommodified, i0.guid, i0.updatetime as iupdatetime
+        from ITEM_0 i0
+        inner join ITEM_1 i1 on i0.guid = i1.foundationfk
+        inner join MA_CLASS m ON m.guid = i0.classguid
+        inner join MA_CODE_DETAIL CA ON i1.f_000072 = CA.guid
+        inner join MA_CODE_DETAIL CB ON i1.f_000145 = CB.guid
+        where i0.latestrevision LIKE 'm%'
+        <if test="itemId !=null and itemId !=''">
+            and i0.id = #{itemId}
+        </if>
+    </select>
+</mapper>

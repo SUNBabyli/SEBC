@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djplmsystem.mapper.MaClassMapper">
+    <resultMap type="MaClass" id="MaClassResult">
+        <result property="guid"    column="GUID"    />
+        <result property="classname"    column="CLASSNAME"    />
+        <result property="superclassguid"    column="SUPERCLASSGUID"    />
+        <result property="description"    column="DESCRIPTION"    />
+        <result property="isbuiltin"    column="ISBUILTIN"    />
+        <result property="createTime"    column="CREATETIME"    />
+        <result property="createuserguid"    column="CREATEUSERGUID"    />
+        <result property="updateTime"    column="UPDATETIME"    />
+        <result property="updateuserguid"    column="UPDATEUSERGUID"    />
+        <result property="basetablename"    column="BASETABLENAME"    />
+        <result property="lifecycle"    column="LIFECYCLE"    />
+        <result property="interfaces"    column="INTERFACES"    />
+        <result property="nonqueryable"    column="NONQUERYABLE"    />
+        <result property="superinterface"    column="SUPERINTERFACE"    />
+        <result property="iterationlimit"    column="ITERATIONLIMIT"    />
+        <result property="instancestring"    column="INSTANCESTRING"    />
+        <result property="classification"    column="CLASSIFICATION"    />
+        <result property="maabstract"    column="ABSTRACT"    />
+        <result property="mafinal"    column="FINAL"    />
+        <result property="iconpath"    column="ICONPATH"    />
+        <result property="showpreview"    column="SHOWPREVIEW"    />
+        <result property="iconpath32"    column="ICONPATH32"    />
+        <result property="upoftree"    column="UPOFTREE"    />
+        <result property="iscreatetable"    column="ISCREATETABLE"    />
+        <result property="delflag"    column="DELFLAG"    />
+        <result property="realbasetablename"    column="REALBASETABLENAME"    />
+        <result property="isidunique"    column="ISIDUNIQUE"    />
+        <result property="clz1"    column="CLZ1"    />
+        <result property="clz2"    column="CLZ2"    />
+        <result property="clz3"    column="CLZ3"    />
+        <result property="clz4"    column="CLZ4"    />
+        <result property="clz5"    column="CLZ5"    />
+        <result property="clz6"    column="CLZ6"    />
+    </resultMap>
+
+    <sql id="selectMaClassVo">
+        select GUID, CLASSNAME, SUPERCLASSGUID, DESCRIPTION, ISBUILTIN, CREATETIME, CREATEUSERGUID, UPDATETIME, UPDATEUSERGUID, BASETABLENAME, LIFECYCLE, INTERFACES, NONQUERYABLE, SUPERINTERFACE, ITERATIONLIMIT, INSTANCESTRING, CLASSIFICATION, ABSTRACT, FINAL, ICONPATH, SHOWPREVIEW, ICONPATH32, UPOFTREE, ISCREATETABLE, DELFLAG, REALBASETABLENAME, ISIDUNIQUE, CLZ1, CLZ2, CLZ3, CLZ4, CLZ5, CLZ6 from ma_class
+    </sql>
+
+    <select id="selectMaClassList" parameterType="MaClass" resultMap="MaClassResult">
+        <include refid="selectMaClassVo"/>
+        <where>
+            <if test="guid != null  and guid != ''"> and GUID = #{guid}</if>
+            <if test="classname != null  and classname != ''"> and CLASSNAME like concat('%', #{classname}, '%')</if>
+            <if test="superclassguid != null  and superclassguid != ''"> and SUPERCLASSGUID = #{superclassguid}</if>
+            <if test="description != null  and description != ''"> and DESCRIPTION = #{description}</if>
+        </where>
+    </select>
+
+    <select id="selectMaClassByGuid" parameterType="String" resultMap="MaClassResult">
+        <include refid="selectMaClassVo"/>
+        where GUID = #{guid}
+    </select>
+
+    <insert id="insertMaClass" parameterType="MaClass">
+        insert into ma_class
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="guid != null">GUID,</if>
+            <if test="classname != null">CLASSNAME,</if>
+            <if test="superclassguid != null">SUPERCLASSGUID,</if>
+            <if test="description != null">DESCRIPTION,</if>
+            <if test="isbuiltin != null">ISBUILTIN,</if>
+            <if test="createTime != null">CREATETIME,</if>
+            <if test="createuserguid != null">CREATEUSERGUID,</if>
+            <if test="updateTime != null">UPDATETIME,</if>
+            <if test="updateuserguid != null">UPDATEUSERGUID,</if>
+            <if test="basetablename != null">BASETABLENAME,</if>
+            <if test="lifecycle != null">LIFECYCLE,</if>
+            <if test="interfaces != null">INTERFACES,</if>
+            <if test="nonqueryable != null">NONQUERYABLE,</if>
+            <if test="superinterface != null">SUPERINTERFACE,</if>
+            <if test="iterationlimit != null">ITERATIONLIMIT,</if>
+            <if test="instancestring != null">INSTANCESTRING,</if>
+            <if test="classification != null">CLASSIFICATION,</if>
+            <if test="maabstract != null">ABSTRACT,</if>
+            <if test="mafinal != null">FINAL,</if>
+            <if test="iconpath != null">ICONPATH,</if>
+            <if test="showpreview != null">SHOWPREVIEW,</if>
+            <if test="iconpath32 != null">ICONPATH32,</if>
+            <if test="upoftree != null">UPOFTREE,</if>
+            <if test="iscreatetable != null">ISCREATETABLE,</if>
+            <if test="delflag != null">DELFLAG,</if>
+            <if test="realbasetablename != null">REALBASETABLENAME,</if>
+            <if test="isidunique != null">ISIDUNIQUE,</if>
+            <if test="clz1 != null">CLZ1,</if>
+            <if test="clz2 != null">CLZ2,</if>
+            <if test="clz3 != null">CLZ3,</if>
+            <if test="clz4 != null">CLZ4,</if>
+            <if test="clz5 != null">CLZ5,</if>
+            <if test="clz6 != null">CLZ6,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="guid != null">#{guid},</if>
+            <if test="classname != null">#{classname},</if>
+            <if test="superclassguid != null">#{superclassguid},</if>
+            <if test="description != null">#{description},</if>
+            <if test="isbuiltin != null">#{isbuiltin},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="createuserguid != null">#{createuserguid},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="updateuserguid != null">#{updateuserguid},</if>
+            <if test="basetablename != null">#{basetablename},</if>
+            <if test="lifecycle != null">#{lifecycle},</if>
+            <if test="interfaces != null">#{interfaces},</if>
+            <if test="nonqueryable != null">#{nonqueryable},</if>
+            <if test="superinterface != null">#{superinterface},</if>
+            <if test="iterationlimit != null">#{iterationlimit},</if>
+            <if test="instancestring != null">#{instancestring},</if>
+            <if test="classification != null">#{classification},</if>
+            <if test="maabstract != null">#{maabstract},</if>
+            <if test="mafinal != null">#{mafinal},</if>
+            <if test="iconpath != null">#{iconpath},</if>
+            <if test="showpreview != null">#{showpreview},</if>
+            <if test="iconpath32 != null">#{iconpath32},</if>
+            <if test="upoftree != null">#{upoftree},</if>
+            <if test="iscreatetable != null">#{iscreatetable},</if>
+            <if test="delflag != null">#{delflag},</if>
+            <if test="realbasetablename != null">#{realbasetablename},</if>
+            <if test="isidunique != null">#{isidunique},</if>
+            <if test="clz1 != null">#{clz1},</if>
+            <if test="clz2 != null">#{clz2},</if>
+            <if test="clz3 != null">#{clz3},</if>
+            <if test="clz4 != null">#{clz4},</if>
+            <if test="clz5 != null">#{clz5},</if>
+            <if test="clz6 != null">#{clz6},</if>
+        </trim>
+    </insert>
+
+    <update id="updateMaClass" parameterType="MaClass">
+        update ma_class
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="classname != null">CLASSNAME = #{classname},</if>
+            <if test="superclassguid != null">SUPERCLASSGUID = #{superclassguid},</if>
+            <if test="description != null">DESCRIPTION = #{description},</if>
+            <if test="isbuiltin != null">ISBUILTIN = #{isbuiltin},</if>
+            <if test="createTime != null">CREATETIME = #{createtime},</if>
+            <if test="createuserguid != null">CREATEUSERGUID = #{createuserguid},</if>
+            <if test="updateTime != null">UPDATETIME = #{updatetime},</if>
+            <if test="updateuserguid != null">UPDATEUSERGUID = #{updateuserguid},</if>
+            <if test="basetablename != null">BASETABLENAME = #{basetablename},</if>
+            <if test="lifecycle != null">LIFECYCLE = #{lifecycle},</if>
+            <if test="interfaces != null">INTERFACES = #{interfaces},</if>
+            <if test="nonqueryable != null">NONQUERYABLE = #{nonqueryable},</if>
+            <if test="superinterface != null">SUPERINTERFACE = #{superinterface},</if>
+            <if test="iterationlimit != null">ITERATIONLIMIT = #{iterationlimit},</if>
+            <if test="instancestring != null">INSTANCESTRING = #{instancestring},</if>
+            <if test="classification != null">CLASSIFICATION = #{classification},</if>
+            <if test="maabstract != null">ABSTRACT = #{maabstract},</if>
+            <if test="mafinal != null">FINAL = #{mafinal},</if>
+            <if test="iconpath != null">ICONPATH = #{iconpath},</if>
+            <if test="showpreview != null">SHOWPREVIEW = #{showpreview},</if>
+            <if test="iconpath32 != null">ICONPATH32 = #{iconpath32},</if>
+            <if test="upoftree != null">UPOFTREE = #{upoftree},</if>
+            <if test="iscreatetable != null">ISCREATETABLE = #{iscreatetable},</if>
+            <if test="delflag != null">DELFLAG = #{delflag},</if>
+            <if test="realbasetablename != null">REALBASETABLENAME = #{realbasetablename},</if>
+            <if test="isidunique != null">ISIDUNIQUE = #{isidunique},</if>
+            <if test="clz1 != null">CLZ1 = #{clz1},</if>
+            <if test="clz2 != null">CLZ2 = #{clz2},</if>
+            <if test="clz3 != null">CLZ3 = #{clz3},</if>
+            <if test="clz4 != null">CLZ4 = #{clz4},</if>
+            <if test="clz5 != null">CLZ5 = #{clz5},</if>
+            <if test="clz6 != null">CLZ6 = #{clz6},</if>
+        </trim>
+        where GUID = #{guid}
+    </update>
+
+    <delete id="deleteMaClassByGuid" parameterType="String">
+        delete from ma_class where GUID = #{guid}
+    </delete>
+
+    <delete id="deleteMaClassByGuids" parameterType="String">
+        delete from ma_class where GUID in
+        <foreach item="guid" collection="array" open="(" separator="," close=")">
+            #{guid}
+        </foreach>
+    </delete>
+</mapper>

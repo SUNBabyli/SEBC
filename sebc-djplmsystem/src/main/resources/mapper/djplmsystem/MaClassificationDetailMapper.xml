@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djplmsystem.mapper.MaClassificationDetailMapper">
+
+    <resultMap type="MaClassificationDetail" id="MaClassificationDetailResult">
+        <result property="guid"    column="GUID"    />
+        <result property="masterfk"    column="MASTERFK"    />
+        <result property="parentguid"    column="PARENTGUID"    />
+        <result property="title"    column="TITLE"    />
+        <result property="name"    column="NAME"    />
+        <result property="createuserguid"    column="CREATEUSERGUID"    />
+        <result property="createTime"    column="CREATETIME"    />
+        <result property="updateuserguid"    column="UPDATEUSERGUID"    />
+        <result property="updateTime"    column="UPDATETIME"    />
+        <result property="description"    column="DESCRIPTION"    />
+        <result property="sequence"    column="SEQUENCE"    />
+        <result property="code"    column="CODE"    />
+        <result property="upoftree"    column="UPOFTREE"    />
+        <result property="iconpath"    column="ICONPATH"    />
+        <result property="symbolpath"    column="SYMBOLPATH"    />
+        <result property="delflag"    column="DELFLAG"    />
+        <result property="classification1"    column="CLASSIFICATION1"    />
+    </resultMap>
+
+    <sql id="selectMaClassificationDetailVo">
+        select GUID, MASTERFK, PARENTGUID, TITLE, NAME, CREATEUSERGUID, CREATETIME, UPDATEUSERGUID, UPDATETIME, DESCRIPTION, SEQUENCE, CODE, UPOFTREE, ICONPATH, SYMBOLPATH, DELFLAG, CLASSIFICATION1 from ma_classification_detail
+    </sql>
+
+    <select id="selectMacidListByMasterfk" parameterType="list"  resultMap="MaClassificationDetailResult">
+        <include refid="selectMaClassificationDetailVo"/>
+        where DELFLAG = 'N'
+        <if test="list != null and list.size() >0">
+            AND MASTERFK IN
+            <foreach collection="list" item="masterfk" index="index" open="(" separator="," close=")">
+                #{masterfk,jdbcType=VARCHAR}
+            </foreach>
+        </if>
+        order by MASTERFK desc, CODE desc
+    </select>
+
+    <select id="selectMaClassificationDetailList" parameterType="MaClassificationDetail" resultMap="MaClassificationDetailResult">
+        <include refid="selectMaClassificationDetailVo"/>
+        <where>
+            <if test="guid != null  and guid != ''"> and GUID = #{guid}</if>
+            <if test="masterfk != null  and masterfk != ''"> and MASTERFK = #{masterfk}</if>
+            <if test="parentguid != null  and parentguid != ''"> and PARENTGUID = #{parentguid}</if>
+            <if test="title != null  and title != ''"> and TITLE like concat('%', #{title}, '%')</if>
+            <if test="name != null  and name != ''"> and NAME = #{name}</if>
+            <if test="createuserguid != null  and createuserguid != ''"> and CREATEUSERGUID = #{createuserguid}</if>
+            <if test="createTime != null "> and CREATETIME = #{createTime}</if>
+            <if test="updateuserguid != null  and updateuserguid != ''"> and UPDATEUSERGUID = #{updateuserguid}</if>
+            <if test="updateTime != null "> and UPDATETIME = #{updateTime}</if>
+            <if test="description != null  and description != ''"> and DESCRIPTION = #{description}</if>
+            <if test="sequence != null "> and SEQUENCE = #{sequence}</if>
+            <if test="code != null  and code != ''"> and CODE = #{code}</if>
+            <if test="upoftree != null  and upoftree != ''"> and UPOFTREE = #{upoftree}</if>
+            <if test="iconpath != null  and iconpath != ''"> and ICONPATH = #{iconpath}</if>
+            <if test="symbolpath != null  and symbolpath != ''"> and SYMBOLPATH = #{symbolpath}</if>
+            <if test="delflag != null  and delflag != ''"> and DELFLAG = #{delflag}</if>
+            <if test="classification1 != null  and classification1 != ''"> and CLASSIFICATION1 = #{classification1}</if>
+        </where>
+    </select>
+
+    <select id="selectMaClassificationDetailAllList" resultMap="MaClassificationDetailResult">
+        <include refid="selectMaClassificationDetailVo"/>
+         WHERE DELFLAG = 'N'
+    </select>
+
+    <select id="selectMaClassificationDetailByGuid" parameterType="String" resultMap="MaClassificationDetailResult">
+        <include refid="selectMaClassificationDetailVo"/>
+        where GUID = #{guid} AND DELFLAG = 'N'
+    </select>
+</mapper>

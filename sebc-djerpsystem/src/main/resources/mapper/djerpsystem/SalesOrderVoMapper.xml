@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djerpsystem.mapper.SalesOrderVoMapper">
+    <resultMap id="SalesOrderVoResult" type="SalesOrderVo">
+        <result property="sales_CENTER_ID" column="SALES_CENTER_ID"/>
+        <result property="sales_CENTER_CODE" column="SALES_CENTER_CODE"/>
+        <result property="sales_CENTER_NAME" column="SALES_CENTER_NAME"/>
+        <result property="doc_ID" column="DOC_ID"/>
+        <result property="sales_ORDER_DOC_ID" column="SALES_ORDER_DOC_ID"/>
+        <result property="doc_NAME" column="DOC_NAME"/>
+        <result property="doc_NO" column="DOC_NO"/>
+        <result property="sales_ORDER_DOC_D_ID" column="SALES_ORDER_DOC_D_ID"/>
+        <result property="customer_CODE" column="CUSTOMER_CODE"/>
+        <result property="customer_NAME" column="CUSTOMER_NAME"/>
+        <result property="employee_CODE" column="EMPLOYEE_CODE"/>
+        <result property="employee_NAME" column="EMPLOYEE_NAME"/>
+        <result property="admin_UNIT_CODE" column="ADMIN_UNIT_CODE"/>
+        <result property="admin_UNIT_NAME" column="ADMIN_UNIT_NAME"/>
+        <result property="doc_DATE" column="DOC_DATE"/>
+        <result property="order_DATE" column="ORDER_DATE"/>
+        <result property="company_CODE" column="COMPANY_CODE"/>
+        <result property="company_NAME" column="COMPANY_NAME"/>
+        <result property="currency_CODE" column="CURRENCY_CODE"/>
+        <result property="exchange_RATE" column="EXCHANGE_RATE"/>
+        <result property="customer_ADDR_NAME" column="CUSTOMER_ADDR_NAME"/>
+        <result property="customer_CONTACT_NAME" column="CUSTOMER_CONTACT_NAME"/>
+        <result property="tax_INCLUDED" column="TAX_INCLUDED"/>
+        <result property="payment_TERM_CODE" column="PAYMENT_TERM_CODE"/>
+        <result property="payment_TERM_NAME" column="PAYMENT_TERM_NAME"/>
+        <result property="earnest" column="EARNEST"/>
+        <result property="earnest_RATE" column="EARNEST_RATE"/>
+        <result property="is_INSTALLMENT" column="IS_INSTALLMENT"/>
+        <result property="installment_SOURCE" column="INSTALLMENT_SOURCE"/>
+        <result property="partial_DELIVERY" column="PARTIAL_DELIVERY"/>
+        <result property="contract_DOC_NO" column="CONTRACT_ID_DOC_NO"/>
+        <result property="remark1" column="REMARK1"/>
+        <result property="multi_DELIVERY" column="MULTI_DELIVERY"/>
+        <result property="ship_TO_ADDR_NAME" column="SHIP_TO_ADDR_NAME"/>
+        <result property="ship_TO_CONTACT_NAME" column="SHIP_TO_CONTACT_NAME"/>
+        <result property="delivery_TERM_CODE" column="DELIVERY_TERM_CODE"/>
+        <result property="delivery_TERM_DESCRIPTION" column="DELIVERY_TERM_DESCRIPTION"/>
+        <result property="pieces" column="PIECES"/>
+        <result property="remark2" column="REMARK2"/>
+        <result property="invoice_CUSTOMER_ID_CUSTOMER_CODE" column="INVOICE_CUSTOMER_ID_CUSTOMER_CODE"/>
+        <result property="invoice_CUSTOMER_ID_CUSTOMER_NAME" column="INVOICE_CUSTOMER_ID_CUSTOMER_NAME"/>
+        <result property="invoice_ADDR_NAME" column="INVOICE_ADDR_NAME"/>
+        <result property="invoice_CONTACT_NAME" column="INVOICE_CONTACT_NAME"/>
+        <result property="tax_INVOICE_CATEGORY_CODE" column="TAX_INVOICE_CATEGORY_CODE"/>
+        <result property="tax_INVOICE_CATEGORY_NAME" column="TAX_INVOICE_CATEGORY_NAME"/>
+        <result property="remark3" column="REMARK3"/>
+        <result property="customer_ORDER_NO" column="CUSTOMER_ORDER_NO"/>
+        <result property="category" column="CATEGORY"/>
+        <result property="sequenceNumber" column="SequenceNumber"/>
+        <result property="item_TYPE" column="ITEM_TYPE"/>
+        <result property="e_CODE" column="E_CODE"/>
+        <result property="item_CODE" column="ITEM_CODE"/>
+        <result property="item_DESCRIPTION" column="ITEM_DESCRIPTION"/>
+        <result property="item_FEATURE_CODE" column="ITEM_FEATURE_CODE"/>
+        <result property="item_SPECIFICATION" column="ITEM_SPECIFICATION"/>
+        <result property="udf022" column="UDF022"/>
+        <result property="business_QTY" column="BUSINESS_QTY"/>
+        <result property="unit_CODE" column="UNIT_CODE"/>
+        <result property="unit_NAME" column="UNIT_NAME"/>
+        <result property="price_QTY" column="PRICE_QTY"/>
+        <result property="price_UNIT_ID_UNIT_CODE" column="PRICE_UNIT_ID_UNIT_CODE"/>
+        <result property="price_UNIT_ID_UNIT_NAME" column="PRICE_UNIT_ID_UNIT_NAME"/>
+        <result property="plan_DELIVERY_DATE" column="PLAN_DELIVERY_DATE"/>
+        <result property="price" column="PRICE"/>
+        <result property="discount_RATE" column="DISCOUNT_RATE"/>
+        <result property="discounted_PRICE" column="DISCOUNTED_PRICE"/>
+        <result property="amount" column="AMOUNT"/>
+        <result property="discount_AMT" column="DISCOUNT_AMT"/>
+        <result property="tax_CODE" column="TAX_CODE"/>
+        <result property="tax_NAME" column="TAX_NAME"/>
+        <result property="tax_RATE" column="TAX_RATE"/>
+        <result property="amt_UNINCLUDE_TAX_OC" column="AMT_UNINCLUDE_TAX_OC"/>
+        <result property="tax_OC" column="TAX_OC"/>
+        <result property="amt_UNINCLUDE_TAX_BC" column="AMT_UNINCLUDE_TAX_BC"/>
+        <result property="tax_BC" column="TAX_BC"/>
+        <result property="source_ID_RTK" column="SOURCE_ID_RTK"/>
+        <result property="source_DOC_NO" column="SOURCE_DOC_NO"/>
+        <result property="source_SN" column="SOURCE_SN"/>
+        <result property="source_SEQ_SN" column="SOURCE_SEQ_SN"/>
+        <result property="customer_ITEM_CODE" column="CUSTOMER_ITEM_CODE"/>
+        <result property="customer_ITEM_NAME" column="CUSTOMER_ITEM_NAME"/>
+        <result property="customer_ITEM_SPECIFICATION" column="CUSTOMER_ITEM_SPECIFICATION"/>
+        <result property="sales_ORDER_DOC_D_PIECES" column="SALES_ORDER_DOC_D_PIECES"/>
+        <result property="remark" column="REMARK"/>
+        <result property="settlement_CLOSE" column="SETTLEMENT_CLOSE"/>
+        <result property="pre_SETTLEMENT_PRICE_QTY" column="PRE_SETTLEMENT_PRICE_QTY"/>
+        <result property="pre_SETTLEMENT_AMT_UN_TAX_OC" column="PRE_SETTLEMENT_AMT_UN_TAX_OC"/>
+        <result property="pre_SETTLEMENT_TAX_OC" column="PRE_SETTLEMENT_TAX_OC"/>
+        <result property="settlement_PRICE_QTY" column="SETTLEMENT_PRICE_QTY"/>
+        <result property="settlement_AMT_UN_TAX_OC" column="SETTLEMENT_AMT_UN_TAX_OC"/>
+        <result property="settlement_TAX_OC" column="SETTLEMENT_TAX_OC"/>
+        <result property="approveStatus" column="ApproveStatus"/>
+        <result property="currency_ID" column="CURRENCY_ID"/>
+        <result property="company_ID" column="COMPANY_ID"/>
+        <result property="contract_DOC_NO" column="CONTRACT_DOC_NO"/>
+        <result property="quotation_DOC_NO" column="QUOTATION_DOC_NO"/>
+        <result property="doc_CODE" column="DOC_CODE"/>
+        <result property="customer_F1" column="CUSTOMER_F1"/>
+        <result property="customer_F2" column="CUSTOMER_F2"/>
+        <result property="customer_F3" column="CUSTOMER_F3"/>
+        <result property="item_F1" column="ITEM_F1"/>
+        <result property="item_F2" column="ITEM_F2"/>
+        <result property="item_F3" column="ITEM_F3"/>
+        <result property="item_F4" column="ITEM_F4"/>
+        <result property="sequenceNumber_01" column="SequenceNumber_01"/>
+        <result property="customer_CODE_01" column="CUSTOMER_CODE_01"/>
+        <result property="customer_NAME_01" column="CUSTOMER_NAME_01"/>
+        <result property="ship_TO_ADDR_NAME_01" column="SHIP_TO_ADDR_NAME_01"/>
+        <result property="ship_TO_CONTACT_NAME_01" column="SHIP_TO_CONTACT_NAME_01"/>
+        <result property="delivery_TERM_CODE_01" column="DELIVERY_TERM_CODE_01"/>
+        <result property="delivery_TERM_DESCRIPTION_01" column="DELIVERY_TERM_DESCRIPTION_01"/>
+        <result property="business_QTY_01" column="BUSINESS_QTY_01"/>
+        <result property="price_QTY_01" column="PRICE_QTY_01"/>
+        <result property="inventory_QTY" column="INVENTORY_QTY"/>
+        <result property="second_QTY" column="SECOND_QTY"/>
+        <result property="plan_DELIVERY_DATE_01" column="PLAN_DELIVERY_DATE_01"/>
+        <result property="plan_SHIP_DATE" column="PLAN_SHIP_DATE"/>
+        <result property="delivery_TYPE" column="DELIVERY_TYPE"/>
+        <result property="delivery_PARTNER_ID_RTK" column="DELIVERY_PARTNER_ID_RTK"/>
+        <result property="delivery_PARTNER_ID_ROid" column="DELIVERY_PARTNER_ID_ROid"/>
+        <result property="calColumn_01" column="CalColumn_01"/>
+        <result property="calColumn_02" column="CalColumn_02"/>
+        <result property="plant_CODE" column="PLANT_CODE"/>
+        <result property="plant_NAME" column="PLANT_NAME"/>
+        <result property="warehouse_CODE" column="WAREHOUSE_CODE"/>
+        <result property="warehouse_NAME" column="WAREHOUSE_NAME"/>
+        <result property="sales_SYNERGY_CODE" column="SALES_SYNERGY_CODE"/>
+        <result property="sales_SYNERGY_NAME" column="SALES_SYNERGY_NAME"/>
+        <result property="supply_CENTER_CODE" column="SUPPLY_CENTER_CODE"/>
+        <result property="supply_CENTER_NAME" column="SUPPLY_CENTER_NAME"/>
+        <result property="direct_SHIP" column="DIRECT_SHIP"/>
+        <result property="delivered_BUSINESS_QTY" column="DELIVERED_BUSINESS_QTY"/>
+        <result property="delivered_PRICE_QTY" column="DELIVERED_PRICE_QTY"/>
+        <result property="doc_SD_CLOSE" column="DOC_SD_CLOSE"/>
+        <result property="purchased_BUSINESS_QTY" column="PURCHASED_BUSINESS_QTY"/>
+        <result property="purchased_PRICE_QTY" column="PURCHASED_PRICE_QTY"/>
+        <result property="transfer_PURCHASE_STATUS" column="TRANSFER_PURCHASE_STATUS"/>
+        <result property="plan_STATUS" column="PLAN_STATUS"/>
+        <result property="reserved_BUSINESS_QTY" column="RESERVED_BUSINESS_QTY"/>
+        <result property="remark_01" column="REMARK_01"/>
+        <result property="pieces_01" column="PIECES_01"/>
+        <result property="sequenceNumber_02" column="SequenceNumber_02"/>
+        <result property="installment_TYPE" column="INSTALLMENT_TYPE"/>
+        <result property="installment_NAME" column="INSTALLMENT_NAME"/>
+        <result property="installment_RATE" column="INSTALLMENT_RATE"/>
+        <result property="installment_AMT_OC" column="INSTALLMENT_AMT_OC"/>
+        <result property="carry_OUT_DATE" column="CARRY_OUT_DATE"/>
+        <result property="adv_RECEIVABLE_AMT_OC" column="ADV_RECEIVABLE_AMT_OC"/>
+        <result property="settlement_AMT_OC" column="SETTLEMENT_AMT_OC"/>
+        <result property="verification_AMT_OC" column="VERIFICATION_AMT_OC"/>
+        <result property="balance_AMT_OC" column="BALANCE_AMT_OC"/>
+        <result property="payment_BASE_DATE_S" column="PAYMENT_BASE_DATE_S"/>
+        <result property="payment_BASE_DATE" column="PAYMENT_BASE_DATE"/>
+        <result property="payment_TERM_CODE_01" column="PAYMENT_TERM_CODE_01"/>
+        <result property="payment_TERM_NAME_01" column="PAYMENT_TERM_NAME_01"/>
+        <result property="payment_DATE" column="PAYMENT_DATE"/>
+        <result property="cashing_DATE" column="CASHING_DATE"/>
+        <result property="cash_DISCOUNT_MODE" column="CASH_DISCOUNT_MODE"/>
+        <result property="cash_DISCOUNT_RATE1" column="CASH_DISCOUNT_RATE1"/>
+        <result property="cash_DISCOUNT_DUE_DATE1" column="CASH_DISCOUNT_DUE_DATE1"/>
+        <result property="cash_DISCOUNT_RATE2" column="CASH_DISCOUNT_RATE2"/>
+        <result property="cash_DISCOUNT_DUE_DATE2" column="CASH_DISCOUNT_DUE_DATE2"/>
+        <result property="cash_DISCOUNT_RATE3" column="CASH_DISCOUNT_RATE3"/>
+        <result property="cash_DISCOUNT_DUE_DATE3" column="CASH_DISCOUNT_DUE_DATE3"/>
+        <result property="tax_CODE_01" column="TAX_CODE_01"/>
+        <result property="tax_NAME_01" column="TAX_NAME_01"/>
+        <result property="tax_RATE_01" column="TAX_RATE_01"/>
+        <result property="tax_INCLUDED_01" column="TAX_INCLUDED_01"/>
+        <result property="amt_UNINCLUDE_TAX_OC_01" column="AMT_UNINCLUDE_TAX_OC_01"/>
+        <result property="tax_OC_02" column="TAX_OC_02"/>
+        <result property="pre_SETTLEMENT_AMT_UN_TAX__01" column="PRE_SETTLEMENT_AMT_UN_TAX__01"/>
+        <result property="pre_SETTLEMENT_TAX_OC_01" column="PRE_SETTLEMENT_TAX_OC_01"/>
+        <result property="offseted_AMT_UN_TAX_OC" column="OFFSETED_AMT_UN_TAX_OC"/>
+        <result property="offseted_TAX_OC" column="OFFSETED_TAX_OC"/>
+        <result property="company_CODE_01" column="COMPANY_CODE_01"/>
+        <result property="company_NAME_01" column="COMPANY_NAME_01"/>
+        <result property="drawing_NO" column="DRAWING_NO"/>
+        <result property="item_FEATURE_SPECIFICATION" column="ITEM_FEATURE_SPECIFICATION"/>
+        <result property="project_CODE" column="PROJECT_CODE"/>
+        <result property="project_NAME" column="PROJECT_NAME"/>
+
+    </resultMap>
+    <select id="selectSalesOrderVoList" parameterType="SalesOrderVo" resultMap="SalesOrderVoResult">
+        SELECT TOP 101
+            [SALES_CENTER].[SALES_CENTER_ID] AS SALES_CENTER_ID,
+            [SALES_CENTER].[SALES_CENTER_CODE] AS SALES_CENTER_CODE,
+            [SALES_CENTER].[SALES_CENTER_NAME] AS SALES_CENTER_NAME,
+            [SALES_ORDER_DOC].[DOC_ID] AS DOC_ID,
+            [SALES_ORDER_DOC].[SALES_ORDER_DOC_ID] AS SALES_ORDER_DOC_ID,
+            [SALES_ORDER_DOC_D].[SALES_ORDER_DOC_D_ID] AS SALES_ORDER_DOC_D_ID,
+            [DOC].[DOC_NAME] AS DOC_NAME,
+            [SALES_ORDER_DOC].[DOC_NO] AS DOC_NO,
+            [CUSTOMER_ID].[CUSTOMER_CODE] AS CUSTOMER_CODE,
+            [CUSTOMER_ID].[CUSTOMER_NAME] AS CUSTOMER_NAME,
+            [EMPLOYEE].[EMPLOYEE_CODE] AS EMPLOYEE_CODE,
+            [EMPLOYEE].[EMPLOYEE_NAME] AS EMPLOYEE_NAME,
+            [ADMIN_UNIT].[ADMIN_UNIT_CODE] AS ADMIN_UNIT_CODE,
+            [ADMIN_UNIT].[ADMIN_UNIT_NAME] AS ADMIN_UNIT_NAME,
+            [SALES_ORDER_DOC].[DOC_DATE] AS DOC_DATE,
+            [SALES_ORDER_DOC].[ORDER_DATE] AS ORDER_DATE,
+            [SETTLEMENT_COMPANY_ID].[COMPANY_CODE] AS COMPANY_CODE,
+            [SETTLEMENT_COMPANY_ID].[COMPANY_NAME] AS COMPANY_NAME,
+            [CURRENCY_ID].[CURRENCY_CODE] AS CURRENCY_CODE,
+            [SALES_ORDER_DOC].[EXCHANGE_RATE] AS EXCHANGE_RATE,
+            [SALES_ORDER_DOC].[CUSTOMER_ADDR_NAME] AS CUSTOMER_ADDR_NAME,
+            [SALES_ORDER_DOC].[CUSTOMER_CONTACT_NAME] AS CUSTOMER_CONTACT_NAME,
+            [SALES_ORDER_DOC].[TAX_INCLUDED] AS TAX_INCLUDED,
+            [PAYMENT_TERM_ID].[PAYMENT_TERM_CODE] AS PAYMENT_TERM_CODE,
+            [PAYMENT_TERM_ID].[PAYMENT_TERM_NAME] AS PAYMENT_TERM_NAME,
+            [SALES_ORDER_DOC].[EARNEST] AS EARNEST,
+            [SALES_ORDER_DOC].[EARNEST_RATE] AS EARNEST_RATE,
+            [SALES_ORDER_DOC].[IS_INSTALLMENT] AS IS_INSTALLMENT,
+            [SALES_ORDER_DOC].[INSTALLMENT_SOURCE] AS INSTALLMENT_SOURCE,
+            [SALES_ORDER_DOC].[PARTIAL_DELIVERY] AS PARTIAL_DELIVERY,
+            [CONTRACT_ID].[DOC_NO] AS CONTRACT_ID_DOC_NO,
+            [SALES_ORDER_DOC].[REMARK1] AS REMARK1,
+            [SALES_ORDER_DOC].[MULTI_DELIVERY] AS MULTI_DELIVERY,
+            [SALES_ORDER_DOC].[SHIP_TO_ADDR_NAME] AS SHIP_TO_ADDR_NAME,
+            [SALES_ORDER_DOC].[SHIP_TO_CONTACT_NAME] AS SHIP_TO_CONTACT_NAME,
+            [DELIVERY_TERM_ID].[DELIVERY_TERM_CODE] AS DELIVERY_TERM_CODE,
+            [DELIVERY_TERM_ID].[DELIVERY_TERM_DESCRIPTION] AS DELIVERY_TERM_DESCRIPTION,
+            [SALES_ORDER_DOC].[PIECES] AS PIECES,
+            [SALES_ORDER_DOC].[REMARK2] AS REMARK2,
+            [INVOICE_CUSTOMER_ID].[CUSTOMER_CODE] AS INVOICE_CUSTOMER_ID_CUSTOMER_CODE,
+            [INVOICE_CUSTOMER_ID].[CUSTOMER_NAME] AS INVOICE_CUSTOMER_ID_CUSTOMER_NAME,
+            [SALES_ORDER_DOC].[INVOICE_ADDR_NAME] AS INVOICE_ADDR_NAME,
+            [SALES_ORDER_DOC].[INVOICE_CONTACT_NAME] AS INVOICE_CONTACT_NAME,
+            [TAX_INVOICE_CATEGORY_ID].[TAX_INVOICE_CATEGORY_CODE] AS TAX_INVOICE_CATEGORY_CODE,
+            [TAX_INVOICE_CATEGORY_ID].[TAX_INVOICE_CATEGORY_NAME] AS TAX_INVOICE_CATEGORY_NAME,
+            [SALES_ORDER_DOC].[REMARK3] AS REMARK3,
+            [SALES_ORDER_DOC].[CUSTOMER_ORDER_NO] AS CUSTOMER_ORDER_NO,
+            [SALES_ORDER_DOC].[CATEGORY] AS CATEGORY,
+            [SALES_ORDER_DOC_D].[SequenceNumber] AS SequenceNumber,
+            [SALES_ORDER_DOC_D].[ITEM_TYPE] AS ITEM_TYPE,
+            [ITEM_ID].[E_CODE] AS E_CODE,
+            [ITEM_ID].[ITEM_CODE] AS ITEM_CODE,
+            [SALES_ORDER_DOC_D].[ITEM_DESCRIPTION] AS ITEM_DESCRIPTION,
+            [ITEM_FEATURE_ID].[ITEM_FEATURE_CODE] AS ITEM_FEATURE_CODE,
+            [SALES_ORDER_DOC_D].[ITEM_SPECIFICATION] AS ITEM_SPECIFICATION,
+            [SALES_ORDER_DOC_D].[UDF022] AS UDF022,
+            [SALES_ORDER_DOC_D].[BUSINESS_QTY] AS BUSINESS_QTY,
+            [BUSINESS_UNIT_ID].[UNIT_CODE] AS UNIT_CODE,
+            [BUSINESS_UNIT_ID].[UNIT_NAME] AS UNIT_NAME,
+            [SALES_ORDER_DOC_D].[PRICE_QTY] AS PRICE_QTY,
+            [PRICE_UNIT_ID].[UNIT_CODE] AS PRICE_UNIT_ID_UNIT_CODE,
+            [PRICE_UNIT_ID].[UNIT_NAME] AS PRICE_UNIT_ID_UNIT_NAME,
+            [SALES_ORDER_DOC_D].[PLAN_DELIVERY_DATE] AS PLAN_DELIVERY_DATE,
+            [SALES_ORDER_DOC_D].[PRICE] AS PRICE,
+            [SALES_ORDER_DOC_D].[DISCOUNT_RATE] AS DISCOUNT_RATE,
+            [SALES_ORDER_DOC_D].[DISCOUNTED_PRICE] AS DISCOUNTED_PRICE,
+            [SALES_ORDER_DOC_D].[AMOUNT] AS AMOUNT,
+            [SALES_ORDER_DOC_D].[DISCOUNT_AMT] AS DISCOUNT_AMT,
+            [TAX_ID].[TAX_CODE] AS TAX_CODE,
+            [TAX_ID].[TAX_NAME] AS TAX_NAME,
+            [SALES_ORDER_DOC_D].[TAX_RATE] AS TAX_RATE,
+            [SALES_ORDER_DOC_D].[AMT_UNINCLUDE_TAX_OC] AS AMT_UNINCLUDE_TAX_OC,
+            [SALES_ORDER_DOC_D].[TAX_OC] AS TAX_OC,
+            [SALES_ORDER_DOC_D].[AMT_UNINCLUDE_TAX_BC] AS AMT_UNINCLUDE_TAX_BC,
+            [SALES_ORDER_DOC_D].[TAX_BC] AS TAX_BC,
+            [SALES_ORDER_DOC_D].[SOURCE_ID_RTK] AS SOURCE_ID_RTK,
+            CASE [SALES_ORDER_DOC_D].[SOURCE_ID_RTK]
+            WHEN N'QUOTATION.QUOTATION_D' THEN
+            [QUOTATION].[DOC_NO]
+            WHEN N'CONTRACT.CONTRACT_D.CONTRACT_SD' THEN
+            [CONTRACT].[DOC_NO]
+            ELSE
+                N''
+                END AS SOURCE_DOC_NO,
+             CASE [SALES_ORDER_DOC_D].[SOURCE_ID_RTK]
+            WHEN N'QUOTATION.QUOTATION_D' THEN
+                [QUOTATION_D].[SequenceNumber]
+            WHEN N'CONTRACT.CONTRACT_D.CONTRACT_SD' THEN
+                [CONTRACT_D].[SequenceNumber]
+            ELSE
+                N''
+                END AS SOURCE_SN,
+             CASE [SALES_ORDER_DOC_D].[SOURCE_ID_RTK]
+            WHEN N'CONTRACT.CONTRACT_D.CONTRACT_SD' THEN
+                [CONTRACT_SD].[SequenceNumber]
+            ELSE
+                N''
+                END AS SOURCE_SEQ_SN,
+             [CUSTOMER_ITEM_ID].[CUSTOMER_ITEM_CODE] AS CUSTOMER_ITEM_CODE,
+             [CUSTOMER_ITEM_ID].[CUSTOMER_ITEM_NAME] AS CUSTOMER_ITEM_NAME,
+             [CUSTOMER_ITEM_ID].[CUSTOMER_ITEM_SPECIFICATION] AS CUSTOMER_ITEM_SPECIFICATION,
+             [SALES_ORDER_DOC_D].[PIECES] AS SALES_ORDER_DOC_D_PIECES,
+             [SALES_ORDER_DOC_D].[REMARK] AS REMARK,
+             [SALES_ORDER_DOC_D].[SETTLEMENT_CLOSE] AS SETTLEMENT_CLOSE,
+             [SALES_ORDER_DOC_D].[PRE_SETTLEMENT_PRICE_QTY] AS PRE_SETTLEMENT_PRICE_QTY,
+             [SALES_ORDER_DOC_D].[PRE_SETTLEMENT_AMT_UN_TAX_OC] AS PRE_SETTLEMENT_AMT_UN_TAX_OC,
+             [SALES_ORDER_DOC_D].[PRE_SETTLEMENT_TAX_OC] AS PRE_SETTLEMENT_TAX_OC,
+             [SALES_ORDER_DOC_D].[SETTLEMENT_PRICE_QTY] AS SETTLEMENT_PRICE_QTY,
+             [SALES_ORDER_DOC_D].[SETTLEMENT_AMT_UN_TAX_OC] AS SETTLEMENT_AMT_UN_TAX_OC,
+             [SALES_ORDER_DOC_D].[SETTLEMENT_TAX_OC] AS SETTLEMENT_TAX_OC,
+             [SALES_ORDER_DOC].[ApproveStatus] AS ApproveStatus,
+             [SALES_ORDER_DOC].[CURRENCY_ID] AS CURRENCY_ID,
+             [SETTLEMENT_COMPANY_ID].[COMPANY_ID] AS COMPANY_ID,
+             [CONTRACT].[DOC_NO] AS CONTRACT_DOC_NO,
+             [QUOTATION].[DOC_NO] AS QUOTATION_DOC_NO,
+             [DOC].[DOC_CODE] AS DOC_CODE,
+             [CUSTOMER_PROPERTY].[CUSTOMER_F1] AS CUSTOMER_F1,
+             [CUSTOMER_PROPERTY].[CUSTOMER_F2] AS CUSTOMER_F2,
+             [CUSTOMER_PROPERTY].[CUSTOMER_F3] AS CUSTOMER_F3,
+             [FEATURE].[ITEM_F1] AS ITEM_F1,
+             [FEATURE].[ITEM_F2] AS ITEM_F2,
+             [FEATURE].[ITEM_F3] AS ITEM_F3,
+             [FEATURE].[ITEM_F4] AS ITEM_F4,
+             [SALES_ORDER_DOC_SD].[SequenceNumber] AS SequenceNumber_01,
+             [SHIP_TO_CUSTOMER_ID_001].[CUSTOMER_CODE] AS CUSTOMER_CODE_01,
+             [SHIP_TO_CUSTOMER_ID_001].[CUSTOMER_NAME] AS CUSTOMER_NAME_01,
+             [SALES_ORDER_DOC_SD].[SHIP_TO_ADDR_NAME] AS SHIP_TO_ADDR_NAME_01,
+             [SALES_ORDER_DOC_SD].[SHIP_TO_CONTACT_NAME] AS SHIP_TO_CONTACT_NAME_01,
+             [DELIVERY_TERM_ID_001].[DELIVERY_TERM_CODE] AS DELIVERY_TERM_CODE_01,
+             [DELIVERY_TERM_ID_001].[DELIVERY_TERM_DESCRIPTION] AS DELIVERY_TERM_DESCRIPTION_01,
+             [SALES_ORDER_DOC_SD].[BUSINESS_QTY] AS BUSINESS_QTY_01,
+             [SALES_ORDER_DOC_SD].[PRICE_QTY] AS PRICE_QTY_01,
+             [SALES_ORDER_DOC_SD].[INVENTORY_QTY] AS INVENTORY_QTY,
+             [SALES_ORDER_DOC_SD].[SECOND_QTY] AS SECOND_QTY,
+             [SALES_ORDER_DOC_SD].[PLAN_DELIVERY_DATE] AS PLAN_DELIVERY_DATE_01,
+             [SALES_ORDER_DOC_SD].[PLAN_SHIP_DATE] AS PLAN_SHIP_DATE,
+             [SALES_ORDER_DOC_SD].[DELIVERY_TYPE] AS DELIVERY_TYPE,
+             [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_RTK] AS DELIVERY_PARTNER_ID_RTK,
+             [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_ROid] AS DELIVERY_PARTNER_ID_ROid,
+             CASE [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_RTK]
+            WHEN N'PLANT' THEN
+                [PLANT].[PLANT_CODE]
+            WHEN N'SUPPLIER' THEN
+                [SUPPLIER].[SUPPLIER_CODE]
+            ELSE
+                N''
+                    END AS CalColumn_01,
+             CASE [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_RTK]
+            WHEN N'PLANT' THEN
+                [PLANT].[PLANT_NAME]
+            WHEN N'SUPPLIER' THEN
+                [SUPPLIER].[SUPPLIER_NAME]
+            ELSE
+                N''
+                    END AS CalColumn_02,
+             [DELIVERY_PLANT_ID].[PLANT_CODE] AS PLANT_CODE,
+             [DELIVERY_PLANT_ID].[PLANT_NAME] AS PLANT_NAME,
+             [DELIVERY_WAREHOUSE_ID].[WAREHOUSE_CODE] AS WAREHOUSE_CODE,
+             [DELIVERY_WAREHOUSE_ID].[WAREHOUSE_NAME] AS WAREHOUSE_NAME,
+             CASE [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_RTK]
+            WHEN N'SALES_SYNERGY' THEN
+                [SYNERGY_SOURCE_ID_SALES_SYNERGY].[SALES_SYNERGY_CODE]
+            WHEN N'SUPPLY_SYNERGY' THEN
+                [SYNERGY_SOURCE_ID_SUPPLY_SYNERGY].[SUPPLY_SYNERGY_CODE]
+            ELSE
+                N''
+                    END AS SALES_SYNERGY_CODE,
+             CASE [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_RTK]
+            WHEN N'SALES_SYNERGY' THEN
+                [SYNERGY_SOURCE_ID_SALES_SYNERGY].[SALES_SYNERGY_NAME]
+            WHEN N'SUPPLY_SYNERGY' THEN
+                [SYNERGY_SOURCE_ID_SUPPLY_SYNERGY].[SUPPLY_SYNERGY_NAME]
+            ELSE
+                N''
+                    END AS SALES_SYNERGY_NAME,
+             [SUPPLY_CENTER_ID].[SUPPLY_CENTER_CODE] AS SUPPLY_CENTER_CODE,
+             [SUPPLY_CENTER_ID].[SUPPLY_CENTER_NAME] AS SUPPLY_CENTER_NAME,
+             [SALES_ORDER_DOC_SD].[DIRECT_SHIP] AS DIRECT_SHIP,
+             [SALES_ORDER_DOC_SD].[DELIVERED_BUSINESS_QTY] AS DELIVERED_BUSINESS_QTY,
+             [SALES_ORDER_DOC_SD].[DELIVERED_PRICE_QTY] AS DELIVERED_PRICE_QTY,
+             [SALES_ORDER_DOC_SD].[CLOSE] AS DOC_SD_CLOSE,
+             [SALES_ORDER_DOC_SD].[PURCHASED_BUSINESS_QTY] AS PURCHASED_BUSINESS_QTY,
+             [SALES_ORDER_DOC_SD].[PURCHASED_PRICE_QTY] AS PURCHASED_PRICE_QTY,
+             [SALES_ORDER_DOC_SD].[TRANSFER_PURCHASE_STATUS] AS TRANSFER_PURCHASE_STATUS,
+             [SALES_ORDER_DOC_SD].[PLAN_STATUS] AS PLAN_STATUS,
+             [SALES_ORDER_DOC_SD].[RESERVED_BUSINESS_QTY] AS RESERVED_BUSINESS_QTY,
+             [SALES_ORDER_DOC_SD].[REMARK] AS REMARK_01,
+             [SALES_ORDER_DOC_SD].[PIECES] AS PIECES_01,
+             [SALES_ORDER_DOC_INSTAL].[SequenceNumber] AS SequenceNumber_02,
+             [SALES_ORDER_DOC_INSTAL].[INSTALLMENT_TYPE] AS INSTALLMENT_TYPE,
+             [SALES_ORDER_DOC_INSTAL].[INSTALLMENT_NAME] AS INSTALLMENT_NAME,
+             [SALES_ORDER_DOC_INSTAL].[INSTALLMENT_RATE] AS INSTALLMENT_RATE,
+             [SALES_ORDER_DOC_INSTAL].[INSTALLMENT_AMT_OC] AS INSTALLMENT_AMT_OC,
+             [SALES_ORDER_DOC_INSTAL].[CARRY_OUT_DATE] AS CARRY_OUT_DATE,
+             [SALES_ORDER_DOC_INSTAL].[ADV_RECEIVABLE_AMT_OC] AS ADV_RECEIVABLE_AMT_OC,
+             [SALES_ORDER_DOC_INSTAL].[SETTLEMENT_AMT_OC] AS SETTLEMENT_AMT_OC,
+             [SALES_ORDER_DOC_INSTAL].[VERIFICATION_AMT_OC] AS VERIFICATION_AMT_OC,
+             [SALES_ORDER_DOC_INSTAL].[BALANCE_AMT_OC] AS BALANCE_AMT_OC,
+             [SALES_ORDER_DOC_INSTAL].[PAYMENT_BASE_DATE_S] AS PAYMENT_BASE_DATE_S,
+             [SALES_ORDER_DOC_INSTAL].[PAYMENT_BASE_DATE] AS PAYMENT_BASE_DATE,
+             [PAYMENT_TERM_ID_01].[PAYMENT_TERM_CODE] AS PAYMENT_TERM_CODE_01,
+             [PAYMENT_TERM_ID_01].[PAYMENT_TERM_NAME] AS PAYMENT_TERM_NAME_01,
+             [SALES_ORDER_DOC_INSTAL].[PAYMENT_DATE] AS PAYMENT_DATE,
+             [SALES_ORDER_DOC_INSTAL].[CASHING_DATE] AS CASHING_DATE,
+             [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_MODE] AS CASH_DISCOUNT_MODE,
+             [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_RATE1] AS CASH_DISCOUNT_RATE1,
+             [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_DUE_DATE1] AS CASH_DISCOUNT_DUE_DATE1,
+             [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_RATE2] AS CASH_DISCOUNT_RATE2,
+             [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_DUE_DATE2] AS CASH_DISCOUNT_DUE_DATE2,
+             [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_RATE3] AS CASH_DISCOUNT_RATE3,
+             [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_DUE_DATE3] AS CASH_DISCOUNT_DUE_DATE3,
+             [TAX_ID_01].[TAX_CODE] AS TAX_CODE_01,
+             [TAX_ID_01].[TAX_NAME] AS TAX_NAME_01,
+             [SALES_ORDER_DOC_INSTAL].[TAX_RATE] AS TAX_RATE_01,
+             [SALES_ORDER_DOC_INSTAL].[TAX_INCLUDED] AS TAX_INCLUDED_01,
+             [SALES_ORDER_DOC_INSTAL].[AMT_UNINCLUDE_TAX_OC] AS AMT_UNINCLUDE_TAX_OC_01,
+             [SALES_ORDER_DOC_INSTAL].[TAX_OC] AS TAX_OC_02,
+             [SALES_ORDER_DOC_INSTAL].[PRE_SETTLEMENT_AMT_UN_TAX_OC] AS PRE_SETTLEMENT_AMT_UN_TAX__01,
+             [SALES_ORDER_DOC_INSTAL].[PRE_SETTLEMENT_TAX_OC] AS PRE_SETTLEMENT_TAX_OC_01,
+             [SALES_ORDER_DOC_INSTAL].[OFFSETED_AMT_UN_TAX_OC] AS OFFSETED_AMT_UN_TAX_OC,
+             [SALES_ORDER_DOC_INSTAL].[OFFSETED_TAX_OC] AS OFFSETED_TAX_OC,
+             [SETT_COMPANY_ID].[COMPANY_CODE] AS COMPANY_CODE_01,
+             [SETT_COMPANY_ID].[COMPANY_NAME] AS COMPANY_NAME_01,
+             CASE [ITEM_ID].[DRAWING_NO_FROM]
+            WHEN N'1' THEN
+                [ITEM_ID].[DRAWING_NO]
+            WHEN N'2' THEN
+                [ITEM_FEATURE_ID].[DRAWING_NO]
+                    END AS DRAWING_NO,
+             [ITEM_FEATURE_ID].[ITEM_SPECIFICATION] AS ITEM_FEATURE_SPECIFICATION,
+             [PROJECT_ID].[PROJECT_CODE] AS PROJECT_CODE,
+             [PROJECT_ID].[PROJECT_NAME] AS PROJECT_NAME
+            FROM
+                [SALES_ORDER_DOC] AS [SALES_ORDER_DOC]
+            LEFT JOIN [SALES_CENTER] AS [SALES_CENTER] ON [SALES_ORDER_DOC].[Owner_Org_ROid] = [SALES_CENTER].[SALES_CENTER_ID]
+            LEFT JOIN [DOC] AS [DOC] ON [SALES_ORDER_DOC].[DOC_ID] = [DOC].[DOC_ID]
+            LEFT JOIN [CUSTOMER] AS [CUSTOMER_ID] ON [SALES_ORDER_DOC].[CUSTOMER_ID] = [CUSTOMER_ID].[CUSTOMER_BUSINESS_ID]
+            LEFT JOIN [EMPLOYEE] AS [EMPLOYEE] ON [SALES_ORDER_DOC].[Owner_Emp] = [EMPLOYEE].[EMPLOYEE_ID]
+            LEFT JOIN [ADMIN_UNIT] AS [ADMIN_UNIT] ON [SALES_ORDER_DOC].[Owner_Dept] = [ADMIN_UNIT].[ADMIN_UNIT_ID]
+            LEFT JOIN [COMPANY] AS [SETTLEMENT_COMPANY_ID] ON [SALES_ORDER_DOC].[SETTLEMENT_COMPANY_ID] = [SETTLEMENT_COMPANY_ID].[COMPANY_ID]
+            LEFT JOIN [CURRENCY] AS [CURRENCY_ID] ON [SALES_ORDER_DOC].[CURRENCY_ID] = [CURRENCY_ID].[CURRENCY_ID]
+            LEFT JOIN [PAYMENT_TERM] AS [PAYMENT_TERM_ID] ON [SALES_ORDER_DOC].[PAYMENT_TERM_ID] = [PAYMENT_TERM_ID].[PAYMENT_TERM_ID]
+            LEFT JOIN [CONTRACT] AS [CONTRACT_ID] ON [SALES_ORDER_DOC].[CONTRACT_ID] = [CONTRACT_ID].[CONTRACT_ID]
+            LEFT JOIN [DELIVERY_TERM] AS [DELIVERY_TERM_ID] ON [SALES_ORDER_DOC].[DELIVERY_TERM_ID] = [DELIVERY_TERM_ID].[DELIVERY_TERM_ID]
+            LEFT JOIN [CUSTOMER] AS [INVOICE_CUSTOMER_ID] ON [SALES_ORDER_DOC].[INVOICE_CUSTOMER_ID] = [INVOICE_CUSTOMER_ID].[CUSTOMER_BUSINESS_ID]
+            LEFT JOIN [TAX_INVOICE_CATEGORY] AS [TAX_INVOICE_CATEGORY_ID] ON [SALES_ORDER_DOC].[TAX_INVOICE_CATEGORY_ID] = [TAX_INVOICE_CATEGORY_ID].[TAX_INVOICE_CATEGORY_ID]
+            LEFT JOIN [SALES_ORDER_DOC_D] AS [SALES_ORDER_DOC_D] ON [SALES_ORDER_DOC].[SALES_ORDER_DOC_ID] = [SALES_ORDER_DOC_D].[SALES_ORDER_DOC_ID]
+            LEFT JOIN [ITEM] AS [ITEM_ID] ON [SALES_ORDER_DOC_D].[ITEM_ID] = [ITEM_ID].[ITEM_BUSINESS_ID]
+            LEFT JOIN [ITEM_FEATURE] AS [ITEM_FEATURE_ID] ON [SALES_ORDER_DOC_D].[ITEM_FEATURE_ID] = [ITEM_FEATURE_ID].[ITEM_FEATURE_ID]
+            LEFT JOIN [UNIT] AS [BUSINESS_UNIT_ID] ON [SALES_ORDER_DOC_D].[BUSINESS_UNIT_ID] = [BUSINESS_UNIT_ID].[UNIT_ID]
+            LEFT JOIN [UNIT] AS [PRICE_UNIT_ID] ON [SALES_ORDER_DOC_D].[PRICE_UNIT_ID] = [PRICE_UNIT_ID].[UNIT_ID]
+            LEFT JOIN [TAX] AS [TAX_ID] ON [SALES_ORDER_DOC_D].[TAX_ID] = [TAX_ID].[TAX_ID]
+            LEFT JOIN [QUOTATION_D] AS [QUOTATION_D] ON (
+                [SALES_ORDER_DOC_D].[SOURCE_ID_RTK] = 'QUOTATION.QUOTATION_D'
+                AND [SALES_ORDER_DOC_D].[SOURCE_ID_ROid] = [QUOTATION_D].[QUOTATION_D_ID]
+            )
+            LEFT JOIN [QUOTATION] AS [QUOTATION] ON [QUOTATION_D].[QUOTATION_ID] = [QUOTATION].[QUOTATION_ID]
+            LEFT JOIN [CONTRACT_SD] AS [CONTRACT_SD] ON (
+                [SALES_ORDER_DOC_D].[SOURCE_ID_RTK] = 'CONTRACT.CONTRACT_D.CONTRACT_SD'
+                AND [SALES_ORDER_DOC_D].[SOURCE_ID_ROid] = [CONTRACT_SD].[CONTRACT_SD_ID]
+            )
+            LEFT JOIN [CONTRACT_D] AS [CONTRACT_D] ON [CONTRACT_SD].[CONTRACT_D_ID] = [CONTRACT_D].[CONTRACT_D_ID]
+            LEFT JOIN [CONTRACT] AS [CONTRACT] ON [CONTRACT_D].[CONTRACT_ID] = [CONTRACT].[CONTRACT_ID]
+            LEFT JOIN [CUSTOMER_ITEM] AS [CUSTOMER_ITEM_ID] ON [SALES_ORDER_DOC_D].[CUSTOMER_ITEM_ID] = [CUSTOMER_ITEM_ID].[CUSTOMER_ITEM_ID]
+            INNER JOIN (
+                SELECT
+                    [CUSTOMER].[CUSTOMER_BUSINESS_ID] AS [CUSTOMER_ID],
+                    N'' AS [CUSTOMER_F1],
+                    N'' AS [CUSTOMER_F2],
+                    N'' AS [CUSTOMER_F3]
+                FROM
+                    [CUSTOMER]
+                UNION ALL
+                    (
+                        SELECT
+                            '00000000-0000-0000-0000-000000000000' AS [CUSTOMER_ID],
+                            N'' AS [CUSTOMER_F1],
+                            N'' AS [CUSTOMER_F2],
+                            N'' AS [CUSTOMER_F3]
+                    )
+            ) AS [CUSTOMER_PROPERTY] ON [SALES_ORDER_DOC].[CUSTOMER_ID] = [CUSTOMER_PROPERTY].[CUSTOMER_ID]
+            INNER JOIN (
+                SELECT
+                    [ITEM].[ITEM_BUSINESS_ID] AS [ITEM_ID],
+                    ISNULL(
+                        [ITEM_FEATURE].[ITEM_FEATURE_ID],
+                        '00000000-0000-0000-0000-000000000000'
+                    ) AS [ITEM_FEATURE_ID],
+                    N'' AS [ITEM_F1],
+                    N'' AS [ITEM_F2],
+                    N'' AS [ITEM_F3],
+                    N'' AS [ITEM_F4]
+                FROM
+                    [ITEM] AS [ITEM]
+                LEFT OUTER JOIN [ITEM_FEATURE] AS [ITEM_FEATURE] ON [ITEM].[ITEM_BUSINESS_ID] = [ITEM_FEATURE].[ITEM_BUSINESS_ID]
+                UNION ALL
+                    (
+                        SELECT
+                            '00000000-0000-0000-0000-000000000000' AS [ITEM_ID],
+                            '00000000-0000-0000-0000-000000000000' AS [ITEM_FEATURE_ID],
+                            N'' AS [ITEM_F1],
+                            N'' AS [ITEM_F2],
+                            N'' AS [ITEM_F3],
+                            N'' AS [ITEM_F4]
+                    )
+            ) AS [FEATURE] ON (
+                [SALES_ORDER_DOC_D].[ITEM_ID] = [FEATURE].[ITEM_ID]
+                AND [SALES_ORDER_DOC_D].[ITEM_FEATURE_ID] = [FEATURE].[ITEM_FEATURE_ID]
+            )
+            LEFT JOIN [SALES_ORDER_DOC_SD] AS [SALES_ORDER_DOC_SD] ON [SALES_ORDER_DOC_D].[SALES_ORDER_DOC_D_ID] = [SALES_ORDER_DOC_SD].[SALES_ORDER_DOC_D_ID]
+            LEFT JOIN [CUSTOMER] AS [SHIP_TO_CUSTOMER_ID_001] ON [SALES_ORDER_DOC_SD].[SHIP_TO_CUSTOMER_ID] = [SHIP_TO_CUSTOMER_ID_001].[CUSTOMER_BUSINESS_ID]
+            LEFT JOIN [DELIVERY_TERM] AS [DELIVERY_TERM_ID_001] ON [SALES_ORDER_DOC_SD].[DELIVERY_TERM_ID] = [DELIVERY_TERM_ID_001].[DELIVERY_TERM_ID]
+            LEFT JOIN [PLANT] AS [PLANT] ON (
+                [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_ROid] = [PLANT].[PLANT_ID]
+                AND [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_RTK] = 'PLANT'
+            )
+            LEFT JOIN [SUPPLIER] AS [SUPPLIER] ON (
+                [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_ROid] = [SUPPLIER].[SUPPLIER_BUSINESS_ID]
+                AND [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_RTK] = 'SUPPLIER'
+            )
+            LEFT JOIN [PLANT] AS [DELIVERY_PLANT_ID] ON [SALES_ORDER_DOC_SD].[DELIVERY_PLANT_ID] = [DELIVERY_PLANT_ID].[PLANT_ID]
+            LEFT JOIN [WAREHOUSE] AS [DELIVERY_WAREHOUSE_ID] ON [SALES_ORDER_DOC_SD].[DELIVERY_WAREHOUSE_ID] = [DELIVERY_WAREHOUSE_ID].[WAREHOUSE_ID]
+            LEFT JOIN [SALES_SYNERGY] AS [SYNERGY_SOURCE_ID_SALES_SYNERGY] ON (
+                [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_ROid] = [SYNERGY_SOURCE_ID_SALES_SYNERGY].[SALES_SYNERGY_ID]
+                AND [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_RTK] = 'SALES_SYNERGY'
+            )
+            LEFT JOIN [SUPPLY_SYNERGY] AS [SYNERGY_SOURCE_ID_SUPPLY_SYNERGY] ON (
+                [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_ROid] = [SYNERGY_SOURCE_ID_SUPPLY_SYNERGY].[SUPPLY_SYNERGY_ID]
+                AND [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_RTK] = 'SUPPLY_SYNERGY'
+            )
+            LEFT JOIN [SUPPLY_CENTER] AS [SUPPLY_CENTER_ID] ON [SALES_ORDER_DOC_SD].[SUPPLY_CENTER_ID] = [SUPPLY_CENTER_ID].[SUPPLY_CENTER_ID]
+            LEFT JOIN [SALES_ORDER_DOC_INSTAL] AS [SALES_ORDER_DOC_INSTAL] ON (
+                0 = 1
+                AND [SALES_ORDER_DOC].[SALES_ORDER_DOC_ID] = [SALES_ORDER_DOC_INSTAL].[SALES_ORDER_DOC_ID]
+            )
+            LEFT JOIN [PAYMENT_TERM] AS [PAYMENT_TERM_ID_01] ON [SALES_ORDER_DOC_INSTAL].[PAYMENT_TERM_ID] = [PAYMENT_TERM_ID_01].[PAYMENT_TERM_ID]
+            LEFT JOIN [TAX] AS [TAX_ID_01] ON [SALES_ORDER_DOC_INSTAL].[TAX_ID] = [TAX_ID_01].[TAX_ID]
+            LEFT JOIN [COMPANY] AS [SETT_COMPANY_ID] ON [SALES_ORDER_DOC_SD].[SETT_COMPANY_ID] = [SETT_COMPANY_ID].[COMPANY_ID]
+            LEFT JOIN [PROJECT] AS [PROJECT_ID] ON [SALES_ORDER_DOC_D].[PROJECT_ID] = [PROJECT_ID].[PROJECT_ID]
+            WHERE
+                [SALES_CENTER].[SALES_CENTER_ID] = '35ee06fa-265d-44c3-8813-1712b767c6d1'
+            <if test="doc_NO !=null and doc_NO != ''">
+                AND [SALES_ORDER_DOC].[DOC_NO] like concat('%', #{doc_NO}, '%')
+            </if>
+            <if test="item_CODE !=null and item_CODE != ''">
+                AND [ITEM_ID].[ITEM_CODE] = #{item_CODE}
+            </if>
+            <if test="doc_SD_CLOSE !=null and doc_SD_CLOSE != ''">
+                AND [SALES_ORDER_DOC_SD].[CLOSE] = #{doc_SD_CLOSE}
+            </if>
+            <if test="approveStatus !=null and approveStatus != ''">
+                AND [SALES_ORDER_DOC].ApproveStatus = #{approveStatus}
+            </if>
+            <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+                 AND ORDER_DATE &gt;= #{params.beginTime}
+            </if>
+            <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+                 AND ORDER_DATE &lt;= #{params.endTime}
+            </if>
+            <if test="params.beginTime == null or params.beginTime == ''"><!-- 开始时间检索 -->
+                AND ORDER_DATE &gt;= DATEADD(d, -15, GETDATE())
+            </if>
+            <if test="params.endTime == null or params.endTime == ''"><!-- 结束时间检索 -->
+                AND ORDER_DATE &lt;= DATEADD(d, 30, GETDATE())
+            </if>
+            ORDER BY
+                ORDER_DATE DESC,
+                DOC_NO ASC,
+                SequenceNumber ASC
+
+    </select>
+    <select id="selectSalesOrderVoList2" parameterType="SalesOrderVo" resultMap="SalesOrderVoResult">
+        SELECT TOP 101
+        [SALES_CENTER].[SALES_CENTER_ID] AS SALES_CENTER_ID,
+        [SALES_CENTER].[SALES_CENTER_CODE] AS SALES_CENTER_CODE,
+        [SALES_CENTER].[SALES_CENTER_NAME] AS SALES_CENTER_NAME,
+        [SALES_ORDER_DOC].[DOC_ID] AS DOC_ID,
+        [SALES_ORDER_DOC].[SALES_ORDER_DOC_ID] AS SALES_ORDER_DOC_ID,
+        [SALES_ORDER_DOC_D].[SALES_ORDER_DOC_D_ID] AS SALES_ORDER_DOC_D_ID,
+        [DOC].[DOC_NAME] AS DOC_NAME,
+        [SALES_ORDER_DOC].[DOC_NO] AS DOC_NO,
+        [CUSTOMER_ID].[CUSTOMER_CODE] AS CUSTOMER_CODE,
+        [CUSTOMER_ID].[CUSTOMER_NAME] AS CUSTOMER_NAME,
+        [EMPLOYEE].[EMPLOYEE_CODE] AS EMPLOYEE_CODE,
+        [EMPLOYEE].[EMPLOYEE_NAME] AS EMPLOYEE_NAME,
+        [ADMIN_UNIT].[ADMIN_UNIT_CODE] AS ADMIN_UNIT_CODE,
+        [ADMIN_UNIT].[ADMIN_UNIT_NAME] AS ADMIN_UNIT_NAME,
+        [SALES_ORDER_DOC].[DOC_DATE] AS DOC_DATE,
+        [SALES_ORDER_DOC].[ORDER_DATE] AS ORDER_DATE,
+        [SETTLEMENT_COMPANY_ID].[COMPANY_CODE] AS COMPANY_CODE,
+        [SETTLEMENT_COMPANY_ID].[COMPANY_NAME] AS COMPANY_NAME,
+        [CURRENCY_ID].[CURRENCY_CODE] AS CURRENCY_CODE,
+        [SALES_ORDER_DOC].[EXCHANGE_RATE] AS EXCHANGE_RATE,
+        [SALES_ORDER_DOC].[CUSTOMER_ADDR_NAME] AS CUSTOMER_ADDR_NAME,
+        [SALES_ORDER_DOC].[CUSTOMER_CONTACT_NAME] AS CUSTOMER_CONTACT_NAME,
+        [SALES_ORDER_DOC].[TAX_INCLUDED] AS TAX_INCLUDED,
+        [PAYMENT_TERM_ID].[PAYMENT_TERM_CODE] AS PAYMENT_TERM_CODE,
+        [PAYMENT_TERM_ID].[PAYMENT_TERM_NAME] AS PAYMENT_TERM_NAME,
+        [SALES_ORDER_DOC].[EARNEST] AS EARNEST,
+        [SALES_ORDER_DOC].[EARNEST_RATE] AS EARNEST_RATE,
+        [SALES_ORDER_DOC].[IS_INSTALLMENT] AS IS_INSTALLMENT,
+        [SALES_ORDER_DOC].[INSTALLMENT_SOURCE] AS INSTALLMENT_SOURCE,
+        [SALES_ORDER_DOC].[PARTIAL_DELIVERY] AS PARTIAL_DELIVERY,
+        [CONTRACT_ID].[DOC_NO] AS CONTRACT_ID_DOC_NO,
+        [SALES_ORDER_DOC].[REMARK1] AS REMARK1,
+        [SALES_ORDER_DOC].[MULTI_DELIVERY] AS MULTI_DELIVERY,
+        [SALES_ORDER_DOC].[SHIP_TO_ADDR_NAME] AS SHIP_TO_ADDR_NAME,
+        [SALES_ORDER_DOC].[SHIP_TO_CONTACT_NAME] AS SHIP_TO_CONTACT_NAME,
+        [DELIVERY_TERM_ID].[DELIVERY_TERM_CODE] AS DELIVERY_TERM_CODE,
+        [DELIVERY_TERM_ID].[DELIVERY_TERM_DESCRIPTION] AS DELIVERY_TERM_DESCRIPTION,
+        [SALES_ORDER_DOC].[PIECES] AS PIECES,
+        [SALES_ORDER_DOC].[REMARK2] AS REMARK2,
+        [INVOICE_CUSTOMER_ID].[CUSTOMER_CODE] AS INVOICE_CUSTOMER_ID_CUSTOMER_CODE,
+        [INVOICE_CUSTOMER_ID].[CUSTOMER_NAME] AS INVOICE_CUSTOMER_ID_CUSTOMER_NAME,
+        [SALES_ORDER_DOC].[INVOICE_ADDR_NAME] AS INVOICE_ADDR_NAME,
+        [SALES_ORDER_DOC].[INVOICE_CONTACT_NAME] AS INVOICE_CONTACT_NAME,
+        [TAX_INVOICE_CATEGORY_ID].[TAX_INVOICE_CATEGORY_CODE] AS TAX_INVOICE_CATEGORY_CODE,
+        [TAX_INVOICE_CATEGORY_ID].[TAX_INVOICE_CATEGORY_NAME] AS TAX_INVOICE_CATEGORY_NAME,
+        [SALES_ORDER_DOC].[REMARK3] AS REMARK3,
+        [SALES_ORDER_DOC].[CUSTOMER_ORDER_NO] AS CUSTOMER_ORDER_NO,
+        [SALES_ORDER_DOC].[CATEGORY] AS CATEGORY,
+        [SALES_ORDER_DOC_D].[SequenceNumber] AS SequenceNumber,
+        [SALES_ORDER_DOC_D].[ITEM_TYPE] AS ITEM_TYPE,
+        [ITEM_ID].[E_CODE] AS E_CODE,
+        [ITEM_ID].[ITEM_CODE] AS ITEM_CODE,
+        [SALES_ORDER_DOC_D].[ITEM_DESCRIPTION] AS ITEM_DESCRIPTION,
+        [ITEM_FEATURE_ID].[ITEM_FEATURE_CODE] AS ITEM_FEATURE_CODE,
+        [SALES_ORDER_DOC_D].[ITEM_SPECIFICATION] AS ITEM_SPECIFICATION,
+        [SALES_ORDER_DOC_D].[UDF022] AS UDF022,
+        [SALES_ORDER_DOC_D].[BUSINESS_QTY] AS BUSINESS_QTY,
+        [BUSINESS_UNIT_ID].[UNIT_CODE] AS UNIT_CODE,
+        [BUSINESS_UNIT_ID].[UNIT_NAME] AS UNIT_NAME,
+        [SALES_ORDER_DOC_D].[PRICE_QTY] AS PRICE_QTY,
+        [PRICE_UNIT_ID].[UNIT_CODE] AS PRICE_UNIT_ID_UNIT_CODE,
+        [PRICE_UNIT_ID].[UNIT_NAME] AS PRICE_UNIT_ID_UNIT_NAME,
+        [SALES_ORDER_DOC_D].[PLAN_DELIVERY_DATE] AS PLAN_DELIVERY_DATE,
+        [SALES_ORDER_DOC_D].[PRICE] AS PRICE,
+        [SALES_ORDER_DOC_D].[DISCOUNT_RATE] AS DISCOUNT_RATE,
+        [SALES_ORDER_DOC_D].[DISCOUNTED_PRICE] AS DISCOUNTED_PRICE,
+        [SALES_ORDER_DOC_D].[AMOUNT] AS AMOUNT,
+        [SALES_ORDER_DOC_D].[DISCOUNT_AMT] AS DISCOUNT_AMT,
+        [TAX_ID].[TAX_CODE] AS TAX_CODE,
+        [TAX_ID].[TAX_NAME] AS TAX_NAME,
+        [SALES_ORDER_DOC_D].[TAX_RATE] AS TAX_RATE,
+        [SALES_ORDER_DOC_D].[AMT_UNINCLUDE_TAX_OC] AS AMT_UNINCLUDE_TAX_OC,
+        [SALES_ORDER_DOC_D].[TAX_OC] AS TAX_OC,
+        [SALES_ORDER_DOC_D].[AMT_UNINCLUDE_TAX_BC] AS AMT_UNINCLUDE_TAX_BC,
+        [SALES_ORDER_DOC_D].[TAX_BC] AS TAX_BC,
+        [SALES_ORDER_DOC_D].[SOURCE_ID_RTK] AS SOURCE_ID_RTK,
+        CASE [SALES_ORDER_DOC_D].[SOURCE_ID_RTK]
+        WHEN N'QUOTATION.QUOTATION_D' THEN
+        [QUOTATION].[DOC_NO]
+        WHEN N'CONTRACT.CONTRACT_D.CONTRACT_SD' THEN
+        [CONTRACT].[DOC_NO]
+        ELSE
+        N''
+        END AS SOURCE_DOC_NO,
+        CASE [SALES_ORDER_DOC_D].[SOURCE_ID_RTK]
+        WHEN N'QUOTATION.QUOTATION_D' THEN
+        [QUOTATION_D].[SequenceNumber]
+        WHEN N'CONTRACT.CONTRACT_D.CONTRACT_SD' THEN
+        [CONTRACT_D].[SequenceNumber]
+        ELSE
+        N''
+        END AS SOURCE_SN,
+        CASE [SALES_ORDER_DOC_D].[SOURCE_ID_RTK]
+        WHEN N'CONTRACT.CONTRACT_D.CONTRACT_SD' THEN
+        [CONTRACT_SD].[SequenceNumber]
+        ELSE
+        N''
+        END AS SOURCE_SEQ_SN,
+        [CUSTOMER_ITEM_ID].[CUSTOMER_ITEM_CODE] AS CUSTOMER_ITEM_CODE,
+        [CUSTOMER_ITEM_ID].[CUSTOMER_ITEM_NAME] AS CUSTOMER_ITEM_NAME,
+        [CUSTOMER_ITEM_ID].[CUSTOMER_ITEM_SPECIFICATION] AS CUSTOMER_ITEM_SPECIFICATION,
+        [SALES_ORDER_DOC_D].[PIECES] AS SALES_ORDER_DOC_D_PIECES,
+        [SALES_ORDER_DOC_D].[REMARK] AS REMARK,
+        [SALES_ORDER_DOC_D].[SETTLEMENT_CLOSE] AS SETTLEMENT_CLOSE,
+        [SALES_ORDER_DOC_D].[PRE_SETTLEMENT_PRICE_QTY] AS PRE_SETTLEMENT_PRICE_QTY,
+        [SALES_ORDER_DOC_D].[PRE_SETTLEMENT_AMT_UN_TAX_OC] AS PRE_SETTLEMENT_AMT_UN_TAX_OC,
+        [SALES_ORDER_DOC_D].[PRE_SETTLEMENT_TAX_OC] AS PRE_SETTLEMENT_TAX_OC,
+        [SALES_ORDER_DOC_D].[SETTLEMENT_PRICE_QTY] AS SETTLEMENT_PRICE_QTY,
+        [SALES_ORDER_DOC_D].[SETTLEMENT_AMT_UN_TAX_OC] AS SETTLEMENT_AMT_UN_TAX_OC,
+        [SALES_ORDER_DOC_D].[SETTLEMENT_TAX_OC] AS SETTLEMENT_TAX_OC,
+        [SALES_ORDER_DOC].[ApproveStatus] AS ApproveStatus,
+        [SALES_ORDER_DOC].[CURRENCY_ID] AS CURRENCY_ID,
+        [SETTLEMENT_COMPANY_ID].[COMPANY_ID] AS COMPANY_ID,
+        [CONTRACT].[DOC_NO] AS CONTRACT_DOC_NO,
+        [QUOTATION].[DOC_NO] AS QUOTATION_DOC_NO,
+        [DOC].[DOC_CODE] AS DOC_CODE,
+        [CUSTOMER_PROPERTY].[CUSTOMER_F1] AS CUSTOMER_F1,
+        [CUSTOMER_PROPERTY].[CUSTOMER_F2] AS CUSTOMER_F2,
+        [CUSTOMER_PROPERTY].[CUSTOMER_F3] AS CUSTOMER_F3,
+        [FEATURE].[ITEM_F1] AS ITEM_F1,
+        [FEATURE].[ITEM_F2] AS ITEM_F2,
+        [FEATURE].[ITEM_F3] AS ITEM_F3,
+        [FEATURE].[ITEM_F4] AS ITEM_F4,
+        [SALES_ORDER_DOC_SD].[SequenceNumber] AS SequenceNumber_01,
+        [SHIP_TO_CUSTOMER_ID_001].[CUSTOMER_CODE] AS CUSTOMER_CODE_01,
+        [SHIP_TO_CUSTOMER_ID_001].[CUSTOMER_NAME] AS CUSTOMER_NAME_01,
+        [SALES_ORDER_DOC_SD].[SHIP_TO_ADDR_NAME] AS SHIP_TO_ADDR_NAME_01,
+        [SALES_ORDER_DOC_SD].[SHIP_TO_CONTACT_NAME] AS SHIP_TO_CONTACT_NAME_01,
+        [DELIVERY_TERM_ID_001].[DELIVERY_TERM_CODE] AS DELIVERY_TERM_CODE_01,
+        [DELIVERY_TERM_ID_001].[DELIVERY_TERM_DESCRIPTION] AS DELIVERY_TERM_DESCRIPTION_01,
+        [SALES_ORDER_DOC_SD].[BUSINESS_QTY] AS BUSINESS_QTY_01,
+        [SALES_ORDER_DOC_SD].[PRICE_QTY] AS PRICE_QTY_01,
+        [SALES_ORDER_DOC_SD].[INVENTORY_QTY] AS INVENTORY_QTY,
+        [SALES_ORDER_DOC_SD].[SECOND_QTY] AS SECOND_QTY,
+        [SALES_ORDER_DOC_SD].[PLAN_DELIVERY_DATE] AS PLAN_DELIVERY_DATE_01,
+        [SALES_ORDER_DOC_SD].[PLAN_SHIP_DATE] AS PLAN_SHIP_DATE,
+        [SALES_ORDER_DOC_SD].[DELIVERY_TYPE] AS DELIVERY_TYPE,
+        [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_RTK] AS DELIVERY_PARTNER_ID_RTK,
+        [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_ROid] AS DELIVERY_PARTNER_ID_ROid,
+        CASE [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_RTK]
+        WHEN N'PLANT' THEN
+        [PLANT].[PLANT_CODE]
+        WHEN N'SUPPLIER' THEN
+        [SUPPLIER].[SUPPLIER_CODE]
+        ELSE
+        N''
+        END AS CalColumn_01,
+        CASE [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_RTK]
+        WHEN N'PLANT' THEN
+        [PLANT].[PLANT_NAME]
+        WHEN N'SUPPLIER' THEN
+        [SUPPLIER].[SUPPLIER_NAME]
+        ELSE
+        N''
+        END AS CalColumn_02,
+        [DELIVERY_PLANT_ID].[PLANT_CODE] AS PLANT_CODE,
+        [DELIVERY_PLANT_ID].[PLANT_NAME] AS PLANT_NAME,
+        [DELIVERY_WAREHOUSE_ID].[WAREHOUSE_CODE] AS WAREHOUSE_CODE,
+        [DELIVERY_WAREHOUSE_ID].[WAREHOUSE_NAME] AS WAREHOUSE_NAME,
+        CASE [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_RTK]
+        WHEN N'SALES_SYNERGY' THEN
+        [SYNERGY_SOURCE_ID_SALES_SYNERGY].[SALES_SYNERGY_CODE]
+        WHEN N'SUPPLY_SYNERGY' THEN
+        [SYNERGY_SOURCE_ID_SUPPLY_SYNERGY].[SUPPLY_SYNERGY_CODE]
+        ELSE
+        N''
+        END AS SALES_SYNERGY_CODE,
+        CASE [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_RTK]
+        WHEN N'SALES_SYNERGY' THEN
+        [SYNERGY_SOURCE_ID_SALES_SYNERGY].[SALES_SYNERGY_NAME]
+        WHEN N'SUPPLY_SYNERGY' THEN
+        [SYNERGY_SOURCE_ID_SUPPLY_SYNERGY].[SUPPLY_SYNERGY_NAME]
+        ELSE
+        N''
+        END AS SALES_SYNERGY_NAME,
+        [SUPPLY_CENTER_ID].[SUPPLY_CENTER_CODE] AS SUPPLY_CENTER_CODE,
+        [SUPPLY_CENTER_ID].[SUPPLY_CENTER_NAME] AS SUPPLY_CENTER_NAME,
+        [SALES_ORDER_DOC_SD].[DIRECT_SHIP] AS DIRECT_SHIP,
+        [SALES_ORDER_DOC_SD].[DELIVERED_BUSINESS_QTY] AS DELIVERED_BUSINESS_QTY,
+        [SALES_ORDER_DOC_SD].[DELIVERED_PRICE_QTY] AS DELIVERED_PRICE_QTY,
+        [SALES_ORDER_DOC_SD].[CLOSE] AS DOC_SD_CLOSE,
+        [SALES_ORDER_DOC_SD].[PURCHASED_BUSINESS_QTY] AS PURCHASED_BUSINESS_QTY,
+        [SALES_ORDER_DOC_SD].[PURCHASED_PRICE_QTY] AS PURCHASED_PRICE_QTY,
+        [SALES_ORDER_DOC_SD].[TRANSFER_PURCHASE_STATUS] AS TRANSFER_PURCHASE_STATUS,
+        [SALES_ORDER_DOC_SD].[PLAN_STATUS] AS PLAN_STATUS,
+        [SALES_ORDER_DOC_SD].[RESERVED_BUSINESS_QTY] AS RESERVED_BUSINESS_QTY,
+        [SALES_ORDER_DOC_SD].[REMARK] AS REMARK_01,
+        [SALES_ORDER_DOC_SD].[PIECES] AS PIECES_01,
+        [SALES_ORDER_DOC_INSTAL].[SequenceNumber] AS SequenceNumber_02,
+        [SALES_ORDER_DOC_INSTAL].[INSTALLMENT_TYPE] AS INSTALLMENT_TYPE,
+        [SALES_ORDER_DOC_INSTAL].[INSTALLMENT_NAME] AS INSTALLMENT_NAME,
+        [SALES_ORDER_DOC_INSTAL].[INSTALLMENT_RATE] AS INSTALLMENT_RATE,
+        [SALES_ORDER_DOC_INSTAL].[INSTALLMENT_AMT_OC] AS INSTALLMENT_AMT_OC,
+        [SALES_ORDER_DOC_INSTAL].[CARRY_OUT_DATE] AS CARRY_OUT_DATE,
+        [SALES_ORDER_DOC_INSTAL].[ADV_RECEIVABLE_AMT_OC] AS ADV_RECEIVABLE_AMT_OC,
+        [SALES_ORDER_DOC_INSTAL].[SETTLEMENT_AMT_OC] AS SETTLEMENT_AMT_OC,
+        [SALES_ORDER_DOC_INSTAL].[VERIFICATION_AMT_OC] AS VERIFICATION_AMT_OC,
+        [SALES_ORDER_DOC_INSTAL].[BALANCE_AMT_OC] AS BALANCE_AMT_OC,
+        [SALES_ORDER_DOC_INSTAL].[PAYMENT_BASE_DATE_S] AS PAYMENT_BASE_DATE_S,
+        [SALES_ORDER_DOC_INSTAL].[PAYMENT_BASE_DATE] AS PAYMENT_BASE_DATE,
+        [PAYMENT_TERM_ID_01].[PAYMENT_TERM_CODE] AS PAYMENT_TERM_CODE_01,
+        [PAYMENT_TERM_ID_01].[PAYMENT_TERM_NAME] AS PAYMENT_TERM_NAME_01,
+        [SALES_ORDER_DOC_INSTAL].[PAYMENT_DATE] AS PAYMENT_DATE,
+        [SALES_ORDER_DOC_INSTAL].[CASHING_DATE] AS CASHING_DATE,
+        [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_MODE] AS CASH_DISCOUNT_MODE,
+        [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_RATE1] AS CASH_DISCOUNT_RATE1,
+        [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_DUE_DATE1] AS CASH_DISCOUNT_DUE_DATE1,
+        [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_RATE2] AS CASH_DISCOUNT_RATE2,
+        [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_DUE_DATE2] AS CASH_DISCOUNT_DUE_DATE2,
+        [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_RATE3] AS CASH_DISCOUNT_RATE3,
+        [SALES_ORDER_DOC_INSTAL].[CASH_DISCOUNT_DUE_DATE3] AS CASH_DISCOUNT_DUE_DATE3,
+        [TAX_ID_01].[TAX_CODE] AS TAX_CODE_01,
+        [TAX_ID_01].[TAX_NAME] AS TAX_NAME_01,
+        [SALES_ORDER_DOC_INSTAL].[TAX_RATE] AS TAX_RATE_01,
+        [SALES_ORDER_DOC_INSTAL].[TAX_INCLUDED] AS TAX_INCLUDED_01,
+        [SALES_ORDER_DOC_INSTAL].[AMT_UNINCLUDE_TAX_OC] AS AMT_UNINCLUDE_TAX_OC_01,
+        [SALES_ORDER_DOC_INSTAL].[TAX_OC] AS TAX_OC_02,
+        [SALES_ORDER_DOC_INSTAL].[PRE_SETTLEMENT_AMT_UN_TAX_OC] AS PRE_SETTLEMENT_AMT_UN_TAX__01,
+        [SALES_ORDER_DOC_INSTAL].[PRE_SETTLEMENT_TAX_OC] AS PRE_SETTLEMENT_TAX_OC_01,
+        [SALES_ORDER_DOC_INSTAL].[OFFSETED_AMT_UN_TAX_OC] AS OFFSETED_AMT_UN_TAX_OC,
+        [SALES_ORDER_DOC_INSTAL].[OFFSETED_TAX_OC] AS OFFSETED_TAX_OC,
+        [SETT_COMPANY_ID].[COMPANY_CODE] AS COMPANY_CODE_01,
+        [SETT_COMPANY_ID].[COMPANY_NAME] AS COMPANY_NAME_01,
+        CASE [ITEM_ID].[DRAWING_NO_FROM]
+        WHEN N'1' THEN
+        [ITEM_ID].[DRAWING_NO]
+        WHEN N'2' THEN
+        [ITEM_FEATURE_ID].[DRAWING_NO]
+        END AS DRAWING_NO,
+        [ITEM_FEATURE_ID].[ITEM_SPECIFICATION] AS ITEM_FEATURE_SPECIFICATION,
+        [PROJECT_ID].[PROJECT_CODE] AS PROJECT_CODE,
+        [PROJECT_ID].[PROJECT_NAME] AS PROJECT_NAME
+        FROM
+        [SALES_ORDER_DOC] AS [SALES_ORDER_DOC]
+        LEFT JOIN [SALES_CENTER] AS [SALES_CENTER] ON [SALES_ORDER_DOC].[Owner_Org_ROid] = [SALES_CENTER].[SALES_CENTER_ID]
+        LEFT JOIN [DOC] AS [DOC] ON [SALES_ORDER_DOC].[DOC_ID] = [DOC].[DOC_ID]
+        LEFT JOIN [CUSTOMER] AS [CUSTOMER_ID] ON [SALES_ORDER_DOC].[CUSTOMER_ID] = [CUSTOMER_ID].[CUSTOMER_BUSINESS_ID]
+        LEFT JOIN [EMPLOYEE] AS [EMPLOYEE] ON [SALES_ORDER_DOC].[Owner_Emp] = [EMPLOYEE].[EMPLOYEE_ID]
+        LEFT JOIN [ADMIN_UNIT] AS [ADMIN_UNIT] ON [SALES_ORDER_DOC].[Owner_Dept] = [ADMIN_UNIT].[ADMIN_UNIT_ID]
+        LEFT JOIN [COMPANY] AS [SETTLEMENT_COMPANY_ID] ON [SALES_ORDER_DOC].[SETTLEMENT_COMPANY_ID] = [SETTLEMENT_COMPANY_ID].[COMPANY_ID]
+        LEFT JOIN [CURRENCY] AS [CURRENCY_ID] ON [SALES_ORDER_DOC].[CURRENCY_ID] = [CURRENCY_ID].[CURRENCY_ID]
+        LEFT JOIN [PAYMENT_TERM] AS [PAYMENT_TERM_ID] ON [SALES_ORDER_DOC].[PAYMENT_TERM_ID] = [PAYMENT_TERM_ID].[PAYMENT_TERM_ID]
+        LEFT JOIN [CONTRACT] AS [CONTRACT_ID] ON [SALES_ORDER_DOC].[CONTRACT_ID] = [CONTRACT_ID].[CONTRACT_ID]
+        LEFT JOIN [DELIVERY_TERM] AS [DELIVERY_TERM_ID] ON [SALES_ORDER_DOC].[DELIVERY_TERM_ID] = [DELIVERY_TERM_ID].[DELIVERY_TERM_ID]
+        LEFT JOIN [CUSTOMER] AS [INVOICE_CUSTOMER_ID] ON [SALES_ORDER_DOC].[INVOICE_CUSTOMER_ID] = [INVOICE_CUSTOMER_ID].[CUSTOMER_BUSINESS_ID]
+        LEFT JOIN [TAX_INVOICE_CATEGORY] AS [TAX_INVOICE_CATEGORY_ID] ON [SALES_ORDER_DOC].[TAX_INVOICE_CATEGORY_ID] = [TAX_INVOICE_CATEGORY_ID].[TAX_INVOICE_CATEGORY_ID]
+        LEFT JOIN [SALES_ORDER_DOC_D] AS [SALES_ORDER_DOC_D] ON [SALES_ORDER_DOC].[SALES_ORDER_DOC_ID] = [SALES_ORDER_DOC_D].[SALES_ORDER_DOC_ID]
+        LEFT JOIN [ITEM] AS [ITEM_ID] ON [SALES_ORDER_DOC_D].[ITEM_ID] = [ITEM_ID].[ITEM_BUSINESS_ID]
+        LEFT JOIN [ITEM_FEATURE] AS [ITEM_FEATURE_ID] ON [SALES_ORDER_DOC_D].[ITEM_FEATURE_ID] = [ITEM_FEATURE_ID].[ITEM_FEATURE_ID]
+        LEFT JOIN [UNIT] AS [BUSINESS_UNIT_ID] ON [SALES_ORDER_DOC_D].[BUSINESS_UNIT_ID] = [BUSINESS_UNIT_ID].[UNIT_ID]
+        LEFT JOIN [UNIT] AS [PRICE_UNIT_ID] ON [SALES_ORDER_DOC_D].[PRICE_UNIT_ID] = [PRICE_UNIT_ID].[UNIT_ID]
+        LEFT JOIN [TAX] AS [TAX_ID] ON [SALES_ORDER_DOC_D].[TAX_ID] = [TAX_ID].[TAX_ID]
+        LEFT JOIN [QUOTATION_D] AS [QUOTATION_D] ON (
+        [SALES_ORDER_DOC_D].[SOURCE_ID_RTK] = 'QUOTATION.QUOTATION_D'
+        AND [SALES_ORDER_DOC_D].[SOURCE_ID_ROid] = [QUOTATION_D].[QUOTATION_D_ID]
+        )
+        LEFT JOIN [QUOTATION] AS [QUOTATION] ON [QUOTATION_D].[QUOTATION_ID] = [QUOTATION].[QUOTATION_ID]
+        LEFT JOIN [CONTRACT_SD] AS [CONTRACT_SD] ON (
+        [SALES_ORDER_DOC_D].[SOURCE_ID_RTK] = 'CONTRACT.CONTRACT_D.CONTRACT_SD'
+        AND [SALES_ORDER_DOC_D].[SOURCE_ID_ROid] = [CONTRACT_SD].[CONTRACT_SD_ID]
+        )
+        LEFT JOIN [CONTRACT_D] AS [CONTRACT_D] ON [CONTRACT_SD].[CONTRACT_D_ID] = [CONTRACT_D].[CONTRACT_D_ID]
+        LEFT JOIN [CONTRACT] AS [CONTRACT] ON [CONTRACT_D].[CONTRACT_ID] = [CONTRACT].[CONTRACT_ID]
+        LEFT JOIN [CUSTOMER_ITEM] AS [CUSTOMER_ITEM_ID] ON [SALES_ORDER_DOC_D].[CUSTOMER_ITEM_ID] = [CUSTOMER_ITEM_ID].[CUSTOMER_ITEM_ID]
+        INNER JOIN (
+        SELECT
+        [CUSTOMER].[CUSTOMER_BUSINESS_ID] AS [CUSTOMER_ID],
+        N'' AS [CUSTOMER_F1],
+        N'' AS [CUSTOMER_F2],
+        N'' AS [CUSTOMER_F3]
+        FROM
+        [CUSTOMER]
+        UNION ALL
+        (
+        SELECT
+        '00000000-0000-0000-0000-000000000000' AS [CUSTOMER_ID],
+        N'' AS [CUSTOMER_F1],
+        N'' AS [CUSTOMER_F2],
+        N'' AS [CUSTOMER_F3]
+        )
+        ) AS [CUSTOMER_PROPERTY] ON [SALES_ORDER_DOC].[CUSTOMER_ID] = [CUSTOMER_PROPERTY].[CUSTOMER_ID]
+        INNER JOIN (
+        SELECT
+        [ITEM].[ITEM_BUSINESS_ID] AS [ITEM_ID],
+        ISNULL(
+        [ITEM_FEATURE].[ITEM_FEATURE_ID],
+        '00000000-0000-0000-0000-000000000000'
+        ) AS [ITEM_FEATURE_ID],
+        N'' AS [ITEM_F1],
+        N'' AS [ITEM_F2],
+        N'' AS [ITEM_F3],
+        N'' AS [ITEM_F4]
+        FROM
+        [ITEM] AS [ITEM]
+        LEFT OUTER JOIN [ITEM_FEATURE] AS [ITEM_FEATURE] ON [ITEM].[ITEM_BUSINESS_ID] = [ITEM_FEATURE].[ITEM_BUSINESS_ID]
+        UNION ALL
+        (
+        SELECT
+        '00000000-0000-0000-0000-000000000000' AS [ITEM_ID],
+        '00000000-0000-0000-0000-000000000000' AS [ITEM_FEATURE_ID],
+        N'' AS [ITEM_F1],
+        N'' AS [ITEM_F2],
+        N'' AS [ITEM_F3],
+        N'' AS [ITEM_F4]
+        )
+        ) AS [FEATURE] ON (
+        [SALES_ORDER_DOC_D].[ITEM_ID] = [FEATURE].[ITEM_ID]
+        AND [SALES_ORDER_DOC_D].[ITEM_FEATURE_ID] = [FEATURE].[ITEM_FEATURE_ID]
+        )
+        LEFT JOIN [SALES_ORDER_DOC_SD] AS [SALES_ORDER_DOC_SD] ON [SALES_ORDER_DOC_D].[SALES_ORDER_DOC_D_ID] = [SALES_ORDER_DOC_SD].[SALES_ORDER_DOC_D_ID]
+        LEFT JOIN [CUSTOMER] AS [SHIP_TO_CUSTOMER_ID_001] ON [SALES_ORDER_DOC_SD].[SHIP_TO_CUSTOMER_ID] = [SHIP_TO_CUSTOMER_ID_001].[CUSTOMER_BUSINESS_ID]
+        LEFT JOIN [DELIVERY_TERM] AS [DELIVERY_TERM_ID_001] ON [SALES_ORDER_DOC_SD].[DELIVERY_TERM_ID] = [DELIVERY_TERM_ID_001].[DELIVERY_TERM_ID]
+        LEFT JOIN [PLANT] AS [PLANT] ON (
+        [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_ROid] = [PLANT].[PLANT_ID]
+        AND [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_RTK] = 'PLANT'
+        )
+        LEFT JOIN [SUPPLIER] AS [SUPPLIER] ON (
+        [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_ROid] = [SUPPLIER].[SUPPLIER_BUSINESS_ID]
+        AND [SALES_ORDER_DOC_SD].[DELIVERY_PARTNER_ID_RTK] = 'SUPPLIER'
+        )
+        LEFT JOIN [PLANT] AS [DELIVERY_PLANT_ID] ON [SALES_ORDER_DOC_SD].[DELIVERY_PLANT_ID] = [DELIVERY_PLANT_ID].[PLANT_ID]
+        LEFT JOIN [WAREHOUSE] AS [DELIVERY_WAREHOUSE_ID] ON [SALES_ORDER_DOC_SD].[DELIVERY_WAREHOUSE_ID] = [DELIVERY_WAREHOUSE_ID].[WAREHOUSE_ID]
+        LEFT JOIN [SALES_SYNERGY] AS [SYNERGY_SOURCE_ID_SALES_SYNERGY] ON (
+        [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_ROid] = [SYNERGY_SOURCE_ID_SALES_SYNERGY].[SALES_SYNERGY_ID]
+        AND [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_RTK] = 'SALES_SYNERGY'
+        )
+        LEFT JOIN [SUPPLY_SYNERGY] AS [SYNERGY_SOURCE_ID_SUPPLY_SYNERGY] ON (
+        [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_ROid] = [SYNERGY_SOURCE_ID_SUPPLY_SYNERGY].[SUPPLY_SYNERGY_ID]
+        AND [SALES_ORDER_DOC_SD].[SYNERGY_SOURCE_ID_RTK] = 'SUPPLY_SYNERGY'
+        )
+        LEFT JOIN [SUPPLY_CENTER] AS [SUPPLY_CENTER_ID] ON [SALES_ORDER_DOC_SD].[SUPPLY_CENTER_ID] = [SUPPLY_CENTER_ID].[SUPPLY_CENTER_ID]
+        LEFT JOIN [SALES_ORDER_DOC_INSTAL] AS [SALES_ORDER_DOC_INSTAL] ON (
+        0 = 1
+        AND [SALES_ORDER_DOC].[SALES_ORDER_DOC_ID] = [SALES_ORDER_DOC_INSTAL].[SALES_ORDER_DOC_ID]
+        )
+        LEFT JOIN [PAYMENT_TERM] AS [PAYMENT_TERM_ID_01] ON [SALES_ORDER_DOC_INSTAL].[PAYMENT_TERM_ID] = [PAYMENT_TERM_ID_01].[PAYMENT_TERM_ID]
+        LEFT JOIN [TAX] AS [TAX_ID_01] ON [SALES_ORDER_DOC_INSTAL].[TAX_ID] = [TAX_ID_01].[TAX_ID]
+        LEFT JOIN [COMPANY] AS [SETT_COMPANY_ID] ON [SALES_ORDER_DOC_SD].[SETT_COMPANY_ID] = [SETT_COMPANY_ID].[COMPANY_ID]
+        LEFT JOIN [PROJECT] AS [PROJECT_ID] ON [SALES_ORDER_DOC_D].[PROJECT_ID] = [PROJECT_ID].[PROJECT_ID]
+        WHERE
+        [SALES_CENTER].[SALES_CENTER_ID] = '35ee06fa-265d-44c3-8813-1712b767c6d1'
+        <if test="doc_NO !=null and doc_NO != ''">
+            AND [SALES_ORDER_DOC].[DOC_NO] like concat('%', #{doc_NO}, '%')
+        </if>
+        <if test="item_CODE !=null and item_CODE != ''">
+            AND [ITEM_ID].[ITEM_CODE] = #{item_CODE}
+        </if>
+        <if test="doc_SD_CLOSE !=null and doc_SD_CLOSE != ''">
+            AND [SALES_ORDER_DOC_SD].[CLOSE] = #{doc_SD_CLOSE}
+        </if>
+        <if test="approveStatus !=null and approveStatus != ''">
+            AND [SALES_ORDER_DOC].ApproveStatus = #{approveStatus}
+        </if>
+        <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+            AND ORDER_DATE &gt;= #{params.beginTime}
+        </if>
+        <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+            AND ORDER_DATE &lt;= #{params.endTime}
+        </if>
+        ORDER BY
+        ORDER_DATE DESC,
+        DOC_NO ASC,
+        SequenceNumber ASC
+
+    </select>
+</mapper>

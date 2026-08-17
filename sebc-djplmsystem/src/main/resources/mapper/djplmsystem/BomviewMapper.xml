@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djplmsystem.mapper.BomviewMapper">
+
+    <resultMap id="BomviewResult" type="Bomview">
+        <result property="guid" column="guid"/>
+        <result property="name" column="name"/>
+        <result property="end1" column="end1"/>
+        <result property="id" column="id"/>
+    </resultMap>
+
+    <select id="selectBomviewByEnd1" parameterType="String" resultMap="BomviewResult">
+        select guid, name, end1 from BOMVIEW_0 WHERE name = 'BOM' and end1 = #{end1}
+    </select>
+
+    <select id="selectBomviewById" parameterType="String" resultMap="BomviewResult">
+        select guid, name, end1 from BOMVIEW_0 WHERE name = 'BOM' and latestrevision LIKE 'm%' and id = #{id}
+    </select>
+</mapper>

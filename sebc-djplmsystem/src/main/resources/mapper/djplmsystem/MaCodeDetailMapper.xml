@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djplmsystem.mapper.MaCodeDetailMapper">
+
+    <resultMap type="MaCodeDetail" id="MaCodeDetailResult">
+        <result property="guid"    column="GUID"    />
+        <result property="masterguid"    column="MASTERGUID"    />
+        <result property="title"    column="TITLE"    />
+    </resultMap>
+
+    <sql id="selectMaCodeDetailVo">
+        select GUID, MASTERGUID, TITLE from MA_CODE_DETAIL
+    </sql>
+
+    <select id="selectMaCodeDetailList" resultMap="MaCodeDetailResult">
+        <include refid="selectMaCodeDetailVo"/>
+        where DELFLAG = 'N'
+    </select>
+</mapper>

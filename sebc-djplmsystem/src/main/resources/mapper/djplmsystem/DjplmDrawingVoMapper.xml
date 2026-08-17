@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djplmsystem.mapper.DjplmDrawingVoMapper">
+
+    <resultMap id="DjplmDrawingVoResult" type="DjplmDrawingVo">
+        <result property="guid" column="GUID"/>
+        <result property="itemid" column="ITEMID"/>
+        <result property="fileid" column="FILEID"/>
+        <result property="fileguid" column="FILEGUID"/>
+        <result property="fileobject" column="FILEOBJECT"/>
+        <result property="filerevisionid" column="FILEREVISIONID"/>
+        <result property="fileuiname" column="FILEUINAME"/>
+        <result property="filepath" column="FILEPATH"/>
+        <result property="fileentityname" column="FILEENTITYNAME"/>
+        <result property="filetype" column="FILETYPE"/>
+    </resultMap>
+
+    <select id="selectDjplmDrawingVoListByItemid" parameterType="String" resultMap="DjplmDrawingVoResult">
+        SELECT DISTINCT
+        i.GUID AS GUID,
+        i.ID AS ITEMID,
+        n.ID AS FILEID,
+        f.GUID AS FILEGUID,
+        n.NAME FILEOBJECT,
+        n.REVISIONID || '.' || n.ITERATIONID AS FILEREVISIONID,
+        f.NAME AS FILEUINAME,
+        f.FILEPATH AS FILEPATH,
+        f.ID AS FILEENTITYNAME,
+        f.FILETYPE AS FILETYPE
+        FROM
+        VIEWOBJECT_0 v,
+        ITEM_0 i,
+        NT_00094_0 s,
+        NT_00029_0 n,
+        BI_FILE f
+        WHERE
+        v.GUID = s.VIEWFK
+        AND v.END1$MASTER = i.MASTERFK
+        AND s.END2$MASTER = n.MASTERFK
+        AND n.GUID = f.REVISIONGUID
+        AND n.ITERATIONID=f.ITERATIONID
+        AND i.LATESTREVISION LIKE '%m%'
+        AND n.LATESTREVISION LIKE '%m%'
+        <if test="itemId !=null and itemId !=''">
+            AND i.ID = #{itemId}
+        </if>
+    </select>
+    
+    <select id="checkDrawingNums" parameterType="String" resultType="Integer">
+        SELECT count(i.ID)
+        FROM
+        VIEWOBJECT_0 v,
+        ITEM_0 i,
+        NT_00094_0 s,
+        NT_00029_0 n,
+        BI_FILE f
+        WHERE
+        v.GUID = s.VIEWFK
+        AND v.END1$MASTER = i.MASTERFK
+        AND s.END2$MASTER = n.MASTERFK
+        AND n.FILEGUID = f.guid
+        AND i.LATESTREVISION LIKE '%m%'
+        AND n.LATESTREVISION LIKE '%m%'
+        <if test="itemId !=null and itemId !=''">
+            AND i.ID = #{itemId}
+        </if>
+    </select>
+
+    <select id="selectDjplmDrawingVoListByFileGuid" parameterType="String" resultType="com.siukonda.djplmsystem.domain.vo.DjplmDrawingVo">
+        SELECT DISTINCT
+        i.GUID AS GUID,
+        i.ID AS ITEMID,
+        n.ID AS FILEID,
+        f.GUID AS FILEGUID,
+        n.NAME FILEOBJECT,
+        n.REVISIONID || '.' || n.ITERATIONID AS FILEREVISIONID,
+        f.NAME AS FILEUINAME,
+        f.FILEPATH AS FILEPATH,
+        f.ID AS FILEENTITYNAME,
+        f.FILETYPE AS FILETYPE
+        FROM
+        VIEWOBJECT_0 v,
+        ITEM_0 i,
+        NT_00094_0 s,
+        NT_00029_0 n,
+        BI_FILE f
+        WHERE
+        v.GUID = s.VIEWFK
+        AND v.END1$MASTER = i.MASTERFK
+        AND s.END2$MASTER = n.MASTERFK
+        AND n.GUID = f.REVISIONGUID
+        AND n.ITERATIONID=f.ITERATIONID
+        AND i.LATESTREVISION LIKE '%m%'
+        AND n.LATESTREVISION LIKE '%m%'
+        AND ROWNUM=1
+        <if test="fileGuid !=null and fileGuid !=''">
+            AND f.GUID = #{fileGuid}
+        </if>
+        <if test="fileitemid !=null and fileitemid !=''">
+            AND i.ID = #{fileitemid}
+        </if>
+    </select>
+</mapper>

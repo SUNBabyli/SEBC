@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djerpsystem.mapper.ModetailMapper">
+    <resultMap id="ModetailResult" type="Modetail">
+        <result property="sequencenumber" column="SequenceNumber"/>
+        <result property="mo_d_id" column="MO_D_ID"/>
+        <result property="warehouse_id" column="WAREHOUSE_ID"/>
+        <result property="warehouse_name" column="WAREHOUSE_NAME"/>
+        <result property="item_type" column="ITEM_TYPE"/>
+        <result property="issue_type" column="ISSUE_TYPE"/>
+        <result property="operation_id" column="OPERATION_ID"/>
+        <result property="operation_name" column="OPERATION_NAME"/>
+        <result property="item_id" column="ITEM_ID"/>
+        <result property="item_code" column="ITEM_CODE"/>
+        <result property="item_description" column="ITEM_DESCRIPTION"/>
+        <result property="item_specification" column="ITEM_SPECIFICATION"/>
+        <result property="unit_id" column="UNIT_ID"/>
+        <result property="unit_name" column="UNIT_NAME"/>
+        <result property="required_qty" column="REQUIRED_QTY"/>
+        <result property="requ_include_mult_qty" column="REQU_INCLUDE_MULT_QTY"/>
+        <result property="replaced_qty" column="REPLACED_QTY"/>
+        <result property="issued_qty" column="ISSUED_QTY"/>
+        <result property="plan_issue_date" column="PLAN_ISSUE_DATE"/>
+        <result property="actual_issue_date" column="ACTUAL_ISSUE_DATE"/>
+        <result property="remark" column="REMARK"/>
+        <result property="item_feature_id" column="ITEM_FEATURE_ID"/>
+        <result property="bin_id" column="BIN_ID"/>
+        <result property="item_lot_id" column="ITEM_LOT_ID"/>
+        <result property="required_second_qty" column="REQUIRED_SECOND_QTY"/>
+        <result property="issued_second_qty" column="ISSUED_SECOND_QTY"/>
+        <result property="issued_req_qty" column="ISSUED_REQ_QTY"/>
+        <result property="issued_req_second_qty" column="ISSUED_REQ_SECOND_QTY"/>
+        <result property="mo_d_pic" column="MO_D_PIC"/>
+        <result property="least_required_qty" column="LEAST_REQUIRED_QTY"/>
+        <result property="transfer_qty" column="TRANSFER_QTY"/>
+        <result property="mo_routing_d_id" column="MO_ROUTING_D_ID"/>
+        <result property="not_mo_materail" column="NOT_MO_MATERAIL"/>
+        <result property="version" column="Version"/>
+        <result property="createdate" column="CreateDate"/>
+        <result property="lastmodifieddate" column="LastModifiedDate"/>
+        <result property="modifieddate" column="ModifiedDate"/>
+        <result property="createby" column="CreateBy"/>
+        <result property="lastmodifiedby" column="LastModifiedBy"/>
+        <result property="modifiedby" column="ModifiedBy"/>
+        <result property="approvestatus" column="ApproveStatus"/>
+        <result property="approvedate" column="ApproveDate"/>
+        <result property="approveby" column="ApproveBy"/>
+        <result property="mo_id" column="MO_ID"/>
+    </resultMap>
+    <select id="selectmodetailList" parameterType="FinalMO" resultMap="ModetailResult">
+        SELECT
+            [MO_D].[SequenceNumber],
+            [MO_D].[MO_D_ID],
+            [MO_D].[ITEM_DESCRIPTION],
+            [MO_D].[ITEM_SPECIFICATION],
+            [MO_D].[REQUIRED_QTY],
+            [MO_D].[REQU_INCLUDE_MULT_QTY],
+            [MO_D].[REPLACED_QTY],
+            [MO_D].[ISSUED_QTY],
+            [MO_D].[ITEM_TYPE],
+            [ITEM_PLANT].[ISSUE_TYPE],
+            [MO_D].[PLAN_ISSUE_DATE],
+            [MO_D].[ACTUAL_ISSUE_DATE],
+            [MO_D].[REMARK],
+            [MO_D].[ITEM_ID],
+            [ITEM].[ITEM_CODE],
+            [MO_D].[UNIT_ID],
+            [UNIT].[UNIT_NAME],
+            [MO_D].[ITEM_FEATURE_ID],
+            [MO_D].[OPERATION_ID],
+            [OPERATION].[OPERATION_NAME],
+            [MO_D].[WAREHOUSE_ID],
+            [WAREHOUSE].[WAREHOUSE_NAME],
+            [MO_D].[BIN_ID],
+            [MO_D].[ITEM_LOT_ID],
+            [MO_D].[REQUIRED_SECOND_QTY],
+            [MO_D].[ISSUED_SECOND_QTY],
+            [MO_D].[ISSUED_REQ_QTY],
+            [MO_D].[ISSUED_REQ_SECOND_QTY],
+            [MO_D].[MO_D_PIC],
+            [MO_D].[LEAST_REQUIRED_QTY],
+            [MO_D].[TRANSFER_QTY],
+            [MO_D].[MO_ROUTING_D_ID],
+            [MO_D].[NOT_MO_MATERAIL],
+            CONVERT (bigint, [MO_D].[Version]) AS [Version],
+            [MO_D].[CreateDate],
+            [MO_D].[LastModifiedDate],
+            [MO_D].[ModifiedDate],
+            [MO_D].[CreateBy],
+            [MO_D].[LastModifiedBy],
+            [MO_D].[ModifiedBy],
+            [MO_D].[ApproveStatus],
+            [MO_D].[ApproveDate],
+            [MO_D].[ApproveBy],
+            [MO_D].[MO_ID]
+        FROM
+            [MO_D]
+            INNER JOIN [MO] ON [MO_D].[MO_ID] = [MO].[MO_ID]
+            LEFT JOIN [ITEM] ON [MO_D].[ITEM_ID] = [ITEM].[ITEM_BUSINESS_ID]
+            LEFT JOIN [ITEM_PLANT] ON [MO_D].[ITEM_ID] = [ITEM_PLANT].[ITEM_ID]
+            LEFT JOIN [WAREHOUSE] ON [WAREHOUSE].[WAREHOUSE_ID] = [MO_D].[WAREHOUSE_ID]
+            LEFT JOIN [OPERATION] ON [OPERATION].[OPERATION_ID] = [MO_D].[OPERATION_ID]
+            LEFT JOIN [UNIT] ON [UNIT].[UNIT_ID] = [MO_D].[UNIT_ID]
+        WHERE
+            1=1 AND
+          <if test="mo_ID != null and mo_ID !=''">
+            [MO].[MO_ID] IN (#{mo_ID})
+          </if>
+
+    </select>
+</mapper>

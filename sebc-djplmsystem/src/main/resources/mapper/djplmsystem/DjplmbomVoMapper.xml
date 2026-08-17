@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.siukonda.djplmsystem.mapper.DjplmbomVoMapper">
+    
+    <resultMap type="DjplmbomVo" id="DjplmbomVoResult">
+        <result property="indexrow" column="INDEXROW"/>
+        <result property="parentguid"    column="PARENTGUID"/>
+        <result property="subguid"    column="SUBGUID"/>
+        <result property="subid"    column="SUBID"/>
+        <result property="ischeckout"    column="ISCHECKOUT"/>
+        <result property="revisionid"    column="REVISIONID"/>
+        <result property="status"    column="STATUS"/>
+        <result property="oldid"    column="OLDID"/>
+        <result property="specification"    column="SPECIFICATION"/>
+        <result property="name"    column="NAME"/>
+        <result property="sequence"    column="SEQUENCE"/>
+        <result property="rsflag"    column="RSFLAG"/>
+        <result property="isfromcad"    column="ISFROMCAD"/>
+        <result property="quantity"    column="QUANTITY"/>
+        <result property="base"    column="BASE"/>
+        <result property="layer"    column="LAYER"/>
+        <result property="designators"    column="DESIGNATORS"/>
+        <result property="process"    column="PROCESS"/>
+        <result property="scbz"    column="SCBZ"/>
+        <result property="classification"    column="CLASSIFICATION"/>
+        <result property="weight"    column="WEIGHT"/>
+        <result property="remark"    column="REMARK"/>
+        <result property="descibe"    column="DESCIBE"/>
+        <result property="cz"    column="CZ"/>
+        <result property="sourcetype"    column="SOURCETYPE"/>
+        <result property="gysx"    column="GYSX"/>
+        <result property="ptys"    column="PTYS"/>
+        <result property="ggcs"    column="GGCS"/>
+        <result property="cxckg"    column="CXCKG"/>
+        <result property="zkc"    column="ZKC"/>
+        <result property="zkg"    column="ZKG"/>
+        <result property="zkk"    column="ZKK"/>
+        <result property="dwyl"    column="DWYL"/>
+        <result property="bmcl"    column="BMCL"/>
+        <result property="cpcid"    column="CPCID"/>
+        <result property="jzqxh"    column="JZQXH"/>
+        <result property="jzxh"    column="JZXH"/>
+        <result property="sfbzj"    column="SFBZJ"/>
+        <result property="zdw"    column="ZDW"/>
+        <result property="ssth"    column="SSTH"/>
+        <result property="th"    column="TH"/>
+        <result property="xlxh"    column="XLXH"/>
+        <result property="hjj"    column="HJJ"/>
+        <result property="jglx"    column="JGLX"/>
+        <result property="jgfs"    column="JGFS"/>
+        <result property="cllx"    column="CLLX"/>
+        <result property="viewfkname"    column="VIEWFKNAME"/>
+        <result property="viewfk"    column="VIEWFK"/>
+        <result property="drawingnum" column="DRAWINGNUM"/>
+    </resultMap>
+
+    <sql id="selectDjplmbomVo">
+        select '' AS INDEXROW, PARENTGUID, SUBGUID, SUBID, ISCHECKOUT, REVISIONID, STATUS, OLDID, SPECIFICATION, NAME, SEQUENCE, RSFLAG, ISFROMCAD, QUANTITY, BASE, LAYER, DESIGNATORS, PROCESS, SCBZ, CLASSIFICATION, WEIGHT, REMARK, DESCIBE, CZ, SOURCETYPE, GYSX, PTYS, GGCS, CXCKG, ZKC, ZKG, ZKK, DWYL, BMCL, CPCID, JZQXH, JZXH, SFBZJ, ZDW, SSTH, TH, XLXH, HJJ, JGLX, JGFS, CLLX, VIEWFKNAME, VIEWFK, DRAWINGNUM from (
+    </sql>
+
+    <sql id="selectDjplmParentBomList">
+        SELECT
+            '' AS PARENTGUID,
+            SUBITEM.guid AS SUBGUID,
+            SUBITEM. ID AS SUBID,
+            SUBITEM.ISCHECKOUT AS ISCHECKOUT,
+            SUBITEM.revisionid || '.' || SUBITEM.iterationid AS REVISIONID,
+            SUBITEM.STATUS AS STATUS,
+            ITEM1.F_000070 AS OLDID,
+            SUBITEM. SPECIFICATION AS SPECIFICATION,
+            SUBITEM. NAME AS NAME,
+            BOMSTRU. SEQUENCE AS SEQUENCE,
+            BOMSTRU.RSFLAG AS RSFLAG,
+            BOMSTRU.ISFROMCAD AS ISFROMCAD,
+            BOMSTRU.QUANTITY AS QUANTITY,
+            BOMSTRU.F_000092 AS BASE,
+            BOMSTRU. LAYER AS LAYER,
+            BOMSTRU.DESIGNATORS AS DESIGNATORS,
+            (select MCD.TITLE from MA_CODE_DETAIL MCD where MCD.DELFLAG = 'N' AND MCD.GUID = BOMSTRU.F_000093) AS PROCESS,
+            BOMSTRU.F_000231 AS SCBZ,
+            SUBITEM.classification AS CLASSIFICATION,
+            ITEM1.F_000074 AS WEIGHT,
+            ITEM1.F_000071 AS REMARK,
+            SUBITEM.F_000172 AS DESCIBE,
+            SUBITEM.F_000173 AS CZ,
+            (select MCD.TITLE from MA_CODE_DETAIL MCD where MCD.DELFLAG = 'N' AND MCD.GUID = ITEM1.F_000072) AS SOURCETYPE,
+            SUBITEM.F_000174 AS GYSX,
+            SUBITEM.F_000176 AS PTYS,
+            SUBITEM.F_000185 AS GGCS,
+            SUBITEM.F_000171 AS CXCKG,
+            SUBITEM.F_000178 AS ZKC,
+            SUBITEM.F_000179 AS ZKG,
+            SUBITEM.F_000180 AS ZKK,
+            SUBITEM.F_000184 AS DWYL,
+            SUBITEM.F_000170 AS BMCL,
+            ITEM1.F_000142 AS CPCID,
+            SUBITEM.F_000175 AS JZQXH,
+            SUBITEM.F_000182 AS JZXH,
+            SUBITEM.F_000181 AS SFBZJ,
+            (select MCD.TITLE from MA_CODE_DETAIL MCD where MCD.DELFLAG = 'N' AND MCD.GUID = ITEM1.F_000145) AS ZDW,
+            ITEM1.F_000151 AS SSTH,
+            ITEM1.F_000147 AS TH,
+            SUBITEM.F_000183 AS XLXH,
+            ITEM1.F_000224 AS HJJ,
+            ITEM1.F_000225 AS JGLX,
+            ITEM1.F_000229 AS JGFS,
+            ITEM1.F_000199 AS CLLX,
+            BOMVIEW. NAME AS VIEWFKNAME,
+            BOMVIEW.guid AS VIEWFK,
+            (SELECT count(i.ID) FROM VIEWOBJECT_0 v, ITEM_0 i, NT_00094_0 s, NT_00029_0 n, BI_FILE f WHERE v.GUID = s.VIEWFK AND v.END1$MASTER = i.MASTERFK AND s.END2$MASTER = n.MASTERFK AND n.FILEGUID = f.guid AND i.LATESTREVISION LIKE '%m%' AND n.LATESTREVISION LIKE '%m%' AND i.ID = SUBITEM. ID) AS DRAWINGNUM
+        FROM
+            ITEM_0 SUBITEM
+                LEFT OUTER JOIN BOMSTRUCTURE_0 BOMSTRU ON SUBITEM.MASTERFK = BOMSTRU.END2$MASTER
+                LEFT outer JOIN BOMVIEW_0 BOMVIEW ON BOMVIEW.END1 = SUBITEM.GUID
+                LEFT OUTER JOIN ITEM_1 ITEM1 ON SUBITEM.GUID = ITEM1.FOUNDATIONFK
+    </sql>
+
+    <sql id="selectDjplmSubBomList">
+        SELECT
+        *
+        FROM
+        (
+            SELECT DISTINCT
+            PARENTITEM.guid AS PARENTGUID,
+            SUBITEM.guid AS SUBGUID,
+            SUBITEM. ID AS SUBID,
+            SUBITEM.ISCHECKOUT AS ISCHECKOUT,
+            SUBITEM.revisionid || '.' || SUBITEM.iterationid AS REVISIONID,
+            SUBITEM.STATUS AS STATUS,
+            ITEM1.F_000070 AS OLDID,
+            SUBITEM. SPECIFICATION AS SPECIFICATION,
+            SUBITEM. NAME AS NAME,
+            BOMSTRU. SEQUENCE AS SEQUENCE,
+            BOMSTRU.RSFLAG AS RSFLAG,
+            BOMSTRU.ISFROMCAD AS ISFROMCAD,
+            BOMSTRU.QUANTITY AS QUANTITY,
+            BOMSTRU.F_000092 AS BASE,
+            BOMSTRU. LAYER AS LAYER,
+            BOMSTRU.DESIGNATORS AS DESIGNATORS,
+            (select MCD.TITLE from MA_CODE_DETAIL MCD where MCD.DELFLAG = 'N' AND MCD.GUID = BOMSTRU.F_000093) AS PROCESS,
+            BOMSTRU.F_000231 AS SCBZ,
+            SUBITEM.classification AS CLASSIFICATION,
+            ITEM1.F_000074 AS WEIGHT,
+            ITEM1.F_000071 AS REMARK,
+            SUBITEM.F_000172 AS DESCIBE,
+            SUBITEM.F_000173 AS CZ,
+            (select MCD.TITLE from MA_CODE_DETAIL MCD where MCD.DELFLAG = 'N' AND MCD.GUID = ITEM1.F_000072) AS SOURCETYPE,
+            SUBITEM.F_000174 AS GYSX,
+            SUBITEM.F_000176 AS PTYS,
+            SUBITEM.F_000185 AS GGCS,
+            SUBITEM.F_000171 AS CXCKG,
+            SUBITEM.F_000178 AS ZKC,
+            SUBITEM.F_000179 AS ZKG,
+            SUBITEM.F_000180 AS ZKK,
+            SUBITEM.F_000184 AS DWYL,
+            SUBITEM.F_000170 AS BMCL,
+            ITEM1.F_000142 AS CPCID,
+            SUBITEM.F_000175 AS JZQXH,
+            SUBITEM.F_000182 AS JZXH,
+            SUBITEM.F_000181 AS SFBZJ,
+            (select MCD.TITLE from MA_CODE_DETAIL MCD where MCD.DELFLAG = 'N' AND MCD.GUID = ITEM1.F_000145) AS ZDW,
+            ITEM1.F_000151 AS SSTH,
+            ITEM1.F_000147 AS TH,
+            SUBITEM.F_000183 AS XLXH,
+            ITEM1.F_000224 AS HJJ,
+            ITEM1.F_000225 AS JGLX,
+            ITEM1.F_000229 AS JGFS,
+            ITEM1.F_000199 AS CLLX,
+            BOMVIEW.NAME AS VIEWFKNAME,
+            BOMVIEW.guid AS VIEWFK,
+            (SELECT count(i.ID) FROM VIEWOBJECT_0 v, ITEM_0 i, NT_00094_0 s, NT_00029_0 n, BI_FILE f WHERE v.GUID = s.VIEWFK AND v.END1$MASTER = i.MASTERFK AND s.END2$MASTER = n.MASTERFK AND n.FILEGUID = f.guid AND i.LATESTREVISION LIKE '%m%' AND n.LATESTREVISION LIKE '%m%' AND i.ID = SUBITEM. ID) AS DRAWINGNUM
+            FROM
+            ITEM_0 PARENTITEM,
+            ITEM_0 SUBITEM,
+            BOMVIEW_0 BOMVIEW,
+            BOMSTRUCTURE_0 BOMSTRU,
+            ITEM_1 item1
+            WHERE
+            PARENTITEM.guid (+) = BOMVIEW.end1
+            AND BOMVIEW.guid = BOMSTRU.viewfk
+            AND SUBITEM.masterfk = BOMSTRU.end2$master
+            AND (
+                SUBITEM.guid = item1.foundationfk (+)
+                )
+            AND SUBITEM.latestrevision LIKE 'm%'
+        ) x
+    </sql>
+    
+    <select id="selectDjplmbomVoListByEnd1" parameterType="Bomview" resultMap="DjplmbomVoResult">
+        <include refid="selectDjplmbomVo"/>
+        <include refid="selectDjplmParentBomList"/>
+        where SUBITEM.LATESTREVISION LIKE 'm%' AND BOMVIEW.NAME = 'BOM'
+        <if test="end1 != null and end1 != ''">
+            AND SUBITEM.GUID = #{end1}
+        </if>
+         union all
+        <include refid="selectDjplmSubBomList"/>
+        where LEVEL &lt;= 20 START WITH
+            <if test="guid != null and guid != ''">
+                 x.viewfk = #{guid}
+            </if>
+            AND x.viewfkname = 'BOM' CONNECT BY PRIOR x.subguid = x.parentguid
+            AND PRIOR x.viewfkname = x.viewfkname) b ORDER BY LPAD (b.SEQUENCE, 32, '0')
+    </select>
+</mapper>
